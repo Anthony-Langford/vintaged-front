@@ -5,18 +5,24 @@ import { Router } from "@reach/router"
 // Import helpers
 import store from '../store'
 import '../styles/normalize.css'
+import { commonActions } from '../actions'
 
 // Import containers
-import TestContainer from '../components/TestContainer'
+import TestContainer from '../components/test/TestContainer'
+import HomeContainer from './Home'
 
 store.subscribe(() => {})
 
-const Home = () => <TestContainer />
+store.dispatch(commonActions.fetchWines())
+
+const Home = () => <HomeContainer />
+// const Test = () => <TestContainer />
 
 const App = () =>
   <Provider store={store}>
     <Router>
       <Home path="/" />
+      {/* <Test path="/" /> */}
     </Router>
   </Provider>
 
