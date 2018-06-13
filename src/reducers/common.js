@@ -7,9 +7,6 @@ function common(state = {
   isFetching: false,
 }, action) {
   switch (action.type) {
-  case 'testAction' : {
-    return { ...state, heylook: action.bool };
-  }
   case 'REQUEST_WINES' : {
     return {
       ...state,
@@ -21,6 +18,16 @@ function common(state = {
       ...state,
       isFetching: false,
       wines: action.wines,
+      lastUpdated: action.receivedAt,
+    };
+  }
+  case 'RECEIVE_WINE' : {
+    const id = action.wine._id
+    
+    return {
+      ...state,
+      isFetching: false,
+      [id]: action.wine,
       lastUpdated: action.receivedAt,
     };
   }
