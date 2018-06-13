@@ -3,14 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ThemeProvider } from 'emotion-theming'
 
-// Import helpers
-import store from '../store'
-import {commonActions} from '../actions'
-
 // Import components
-import Title from '../components/Title'
-import Background from '../components/Background'
-import CelestialObject from '../components/CelestialObject'
+import Title from './Title'
+import Background from './Background'
+import CelestialObject from './CelestialObject'
 
 // Define themes
 const dayTheme = {
@@ -38,7 +34,6 @@ class TestContainer extends React.Component {
 
     // Bind functions to global scope
     this.handleClick = this.handleClick.bind(this)
-    store.dispatch(commonActions.fetchWines())
   }
 
   handleClick() {
