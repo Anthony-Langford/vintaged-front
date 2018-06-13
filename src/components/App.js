@@ -8,7 +8,7 @@ import '../styles/normalize.css'
 import { commonActions } from '../actions'
 
 // Import containers
-import TestContainer from '../components/test/TestContainer'
+// import TestContainer from '../components/test/TestContainer'
 import HomeContainer from './Home'
 
 store.subscribe(() => {})

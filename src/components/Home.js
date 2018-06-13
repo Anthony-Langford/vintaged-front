@@ -45,14 +45,17 @@ class Home extends React.Component {
           padding: 1rem;
         `}>
           <div css={`
+            display: flex;
             height: 200px;
             width: 320px;
-            padding: 1rem;
+            padding: 0.5rem;
             border: 1px solid black;
-            border-radius: 10px;
+            border-radius: 7px;
           `}>
-            {/* <img src={wine1[0].} /> */}
-            <div>
+            <img src={wine.image_thumb_url} height="140px" />
+            <div css={`
+            display: flex;
+          `}>
               <span>Name: {wine.name}</span>
             </div>
           </div>
