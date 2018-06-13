@@ -12,8 +12,6 @@ import Title from '../components/Title'
 import Background from '../components/Background'
 import CelestialObject from '../components/CelestialObject'
 
-
-
 // Define themes
 const dayTheme = {
   skyColor: '#37d8e6',
@@ -37,26 +35,10 @@ class TestContainer extends React.Component {
       isDay: true,
       theme: dayTheme,
     }
-  }
-
-  componentWillMount() {   
-    // Display loader before mount
-    // store.dispatch(commonActions.toggleLoader(true))
-
-    store.dispatch(commonActions.fetchWines())
 
     // Bind functions to global scope
     this.handleClick = this.handleClick.bind(this)
-  }
-
-  componentDidMount() {
-    // Hide loader on mount
-    // store.dispatch(commonActions.toggleLoader(false))
-  }
-
-  componentWillUnmount() {
-    // Display loader on unmount
-    // store.dispatch(commonActions.toggleLoader(true))
+    store.dispatch(commonActions.fetchWines())
   }
 
   handleClick() {
@@ -71,7 +53,6 @@ class TestContainer extends React.Component {
   render() {
     return (
       <ThemeProvider theme={this.state.theme}>
-        {/* Add a wrapper */}
         <Background>
           <Title>{this.state.title}</Title>
           <CelestialObject
@@ -91,13 +72,11 @@ function mapStateToProps(state) {
 
 // Static type checking for props
 TestContainer.propTypes = {
-  // optionalPropThatIsAnObject: PropTypes.objectOf(PropTypes.shape),
   dispatch: PropTypes.func.isRequired,
 }
 
 // Set default value for prop if not required and not present
 TestContainer.defaultProps = {
-  // optionalPropThatIsAnObject: {},
 }
 
 export default connect(mapStateToProps)(TestContainer)

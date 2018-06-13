@@ -11,7 +11,7 @@ import rootReducer from './reducers/index';
 // Create an object for the default state
 const defaultState = {
   common: {
-    initialState: 'fuck',
+    initialState: 'hi',
   }
 };
 
