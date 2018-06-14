@@ -11,6 +11,8 @@ const Card = styled('div')`
   display: flex;
   overflow: scroll;
   padding: 4px;
+  height: min-content;
+  max-width: 425px;
   border: 1px solid rgba(0,0,0,0.2);
   border-radius: 7px;
   box-shadow: 0px 1px 0 #d10000,
@@ -27,6 +29,7 @@ const Column = styled('div')`
   display: flex;
   flex-direction: column;
   margin: 4px;
+  height: min-content;
 `
 
 const Text = styled('span')`
@@ -75,39 +78,49 @@ class Home extends React.Component {
           flex-flow: row wrap;
           height: 100vh;
           padding: 1rem;
+          overflow: scroll;
         `}>
           <Card>
             <Column>
               <img src={wine.image_thumb_url} height="200px" />
-              <Text>
-                Price: ${wine.price_in_cents/100}
-              </Text>
+              
+              <Column>
+                <Text>
+                  Price: ${wine.price_in_cents/100}
+                </Text>
 
-              <Text>
-                Volume: {wine.volume_in_milliliters}mL
-              </Text>
+                <Text>
+                  Volume: {wine.volume_in_milliliters}mL
+                </Text>
 
-              <Text>
-                ABV: {wine.alcohol_content/100}%
-              </Text>
+                <Text>
+                  ABV: {wine.alcohol_content/100}%
+                </Text>
 
-              <Text>
-                Origin: {wine.origin}
-              </Text>
+                <Text>
+                  Product #: {wine.product_no}
+                </Text>
 
-              <Text>
-                Category: {wine.secondary_category}
-              </Text>
+                <Text>
+                  Origin: {wine.origin}
+                </Text>
 
-              <Text>
-                Type: {wine.varietal}
-              </Text>
-              <Text>
-                Style: {wine.style}
-              </Text>
-              <Text>
-                Producer: {wine.producer_name}
-              </Text>
+                <Text>
+                  Category: {wine.secondary_category}
+                </Text>
+
+                <Text>
+                  Type: {wine.varietal}
+                </Text>
+
+                <Text>
+                  Style: {wine.style}
+                </Text>
+
+                <Text>
+                  Producer: {wine.producer_name}
+                </Text>
+              </Column>
             </Column>
 
             <Column>
