@@ -16,9 +16,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "babel"
+    "react"
   ],
-  "parser": "babel-eslint",
   "rules": {
     "indent": [
       "error",
