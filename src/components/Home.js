@@ -5,31 +5,14 @@ import styled from 'react-emotion'
 
 // Import components
 import Card from './Home/Card'
+import Row from './Home/Row'
+import Column from './Home/Column'
+import Text from './Home/Text'
+import Title from './Home/Title'
 
 // Import helpers
 import store from '../store'
 import { commonActions } from '../actions'
-
-const Row = styled('div')`
-  display: flex;
-  flex-flow: row wrap;
-`
-
-const Column = styled('div')`
-  display: flex;
-  flex-direction: column;
-  margin: 4px;
-  height: min-content;
-`
-
-const Text = styled('span')`
-  font-size: 12px;
-`
-
-const Title = styled('h1')`
-  font-size: 1.1em;
-  font-weight: 500;
-`
 
 class Home extends React.Component {
   constructor(props) {
@@ -40,7 +23,7 @@ class Home extends React.Component {
     }
   }
   
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.common.wines !== prevProps.common.wines) {
       const wineId = this.props.common.wines[0]._id
 
