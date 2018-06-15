@@ -25,6 +25,11 @@ const Card = styled('div')`
   }
 `
 
+const Row = styled('div')`
+  display: flex;
+  flex-flow: row wrap;
+`
+
 const Column = styled('div')`
   display: flex;
   flex-direction: column;
@@ -82,45 +87,80 @@ class Home extends React.Component {
         `}>
           <Card>
             <Column>
-              <img src={wine.image_thumb_url} height="200px" />
+              <div
+                css={`
+                  height: 25px;
+                `}
+              >
+                <input
+                  id="toggle-heart"
+                  type="checkbox"
+                  css={`
+                    position: absolute;
+                    left: -100vw;
+                    @keyframes heart { 0%, 17.5% { font-size: 0; } }
+                    &:checked + label {
+                      color: #e2264d;
+                      will-change: font-size;
+                      animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+                    }
+                    cursor: pointer;
+                  `}
+                />
+                <label
+                  htmlFor="toggle-heart"
+                  css={`
+                    color: #aab8c2;
+                    width: min-content;
+                    font-size: 25px;
+                  `}
+                >
+                  ❤
+                </label>
+              </div>
+              <img src={wine.image_thumb_url} height="200px" width="150px" />
               
-              <Column>
-                <Text>
-                  Price: ${wine.price_in_cents/100}
-                </Text>
+              <Row>
+                <Column>
+                  <Text>
+                    Price: ${wine.price_in_cents/100}
+                  </Text>
 
-                <Text>
-                  Volume: {wine.volume_in_milliliters}mL
-                </Text>
+                  <Text>
+                    Volume: {wine.volume_in_milliliters}mL
+                  </Text>
 
-                <Text>
-                  ABV: {wine.alcohol_content/100}%
-                </Text>
+                  <Text>
+                    ABV: {wine.alcohol_content/100}%
+                  </Text>
 
-                <Text>
-                  Product #: {wine.product_no}
-                </Text>
+                  <Text>
+                    Product #: {wine.product_no}
+                  </Text>
+                </Column>
 
-                <Text>
-                  Origin: {wine.origin}
-                </Text>
+                <Column>
+                  <Text>
+                    Origin: {wine.origin}
+                  </Text>
 
-                <Text>
-                  Category: {wine.secondary_category}
-                </Text>
+                  <Text>
+                    Category: {wine.secondary_category}
+                  </Text>
 
-                <Text>
-                  Type: {wine.varietal}
-                </Text>
+                  <Text>
+                    Type: {wine.varietal}
+                  </Text>
 
-                <Text>
-                  Style: {wine.style}
-                </Text>
+                  <Text>
+                    Style: {wine.style}
+                  </Text>
 
-                <Text>
-                  Producer: {wine.producer_name}
-                </Text>
-              </Column>
+                  <Text>
+                    Producer: {wine.producer_name}
+                  </Text>
+                </Column>
+              </Row>
             </Column>
 
             <Column>
