@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import styled from 'react-emotion'
 
 // Import components
+import Wrapper from './Home/Wrapper'
 import Card from './Home/Card'
 import Row from './Home/Row'
 import Column from './Home/Column'
 import Text from './Home/Text'
 import Title from './Home/Title'
+import Heart from './Home/Heart'
 
 // Import helpers
 import store from '../store'
@@ -46,46 +47,11 @@ class Home extends React.Component {
           Loading...
         </div>
       ) : (
-        <div css={`
-          display: flex;
-          flex-flow: row wrap;
-          height: 100vh;
-          padding: 1rem;
-          overflow: scroll;
-        `}>
+        <Wrapper>
           <Card>
             <Column>
-              <div
-                css={`
-                  height: 25px;
-                `}
-              >
-                <input
-                  id="toggle-heart"
-                  type="checkbox"
-                  css={`
-                    position: absolute;
-                    left: -100vw;
-                    @keyframes heart { 0%, 17.5% { font-size: 0; } }
-                    &:checked + label {
-                      color: #e2264d;
-                      will-change: font-size;
-                      animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
-                    }
-                    cursor: pointer;
-                  `}
-                />
-                <label
-                  htmlFor="toggle-heart"
-                  css={`
-                    color: #aab8c2;
-                    width: min-content;
-                    font-size: 25px;
-                  `}
-                >
-                  ❤
-                </label>
-              </div>
+              <Heart />
+
               <img src={wine.image_thumb_url} height="200px" width="150px" />
               
               <Row>
@@ -141,7 +107,7 @@ class Home extends React.Component {
               </Text>
             </Column>
           </Card>
-        </div>
+        </Wrapper>
       )
     )
   }
