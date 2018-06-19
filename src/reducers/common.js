@@ -22,7 +22,7 @@ function common(state = {
     };
   }
   case 'RECEIVE_WINE' : {
-    const id = action.wine._id
+    const id = action.wine.id
     
     return {
       ...state,
