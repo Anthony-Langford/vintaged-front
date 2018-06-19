@@ -1,5 +1,10 @@
-import 'whatwg-fetch';
 import API from '../helpers/API';
+import ApolloClient from "apollo-boost";
+import gql from "graphql-tag";
+
+const client = new ApolloClient({
+  uri: API.WINES,
+});
 
 // Common actions
 const commonActions = {
@@ -16,24 +21,24 @@ const commonActions = {
   fetchWines: () => (
     dispatch => {
       dispatch(commonActions.requestWines());
-      return fetch(`${API.WINES}`, {
-        method: 'GET',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        }),
-      })
-        .then((response) => {
-          // Return an empty object if there are no wines
-          if (response.status === 404) {
-            return {};
-          }
-
-          return response.json();
+      return client
+        .query({
+          query: gql`
+            {
+              vintages { id name heat }
+            }
+          `
         })
-        .then(json => {
-          console.log('Wines', json);
-          dispatch(commonActions.receiveWines(json));
+        // .then((response) => {
+        //   // Return an empty object if there are no wines
+        //   if (response.status === 404) {
+        //     return {};
+        //   }
+
+        //   return response.json();
+        // })
+        .then(result => {
+          dispatch(commonActions.receiveWines(result.data.vintages));
         })
         .catch(error => console.log(error));
     }
@@ -41,24 +46,25 @@ const commonActions = {
 
   fetchWine: wineId => (
     dispatch => {
-      return fetch(`${API.WINES}/${wineId}`, {
-        method: 'GET',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        }),
-      })
-        .then((response) => {
-          // Return an empty object if there are no wines
-          if (response.status === 404) {
-            return {};
-          }
-
-          return response.json();
+      return client
+        .query({
+          query: gql`
+            {
+              vintages(id: "${wineId}") { id name heat }
+            }
+          `
         })
-        .then(json => {
-          console.log(`Wine Id ${wineId}`, json);
-          dispatch(commonActions.receiveWine(json));
+        // .then((response) => {
+        //   // Return an empty object if there are no wines
+        //   if (response.status === 404) {
+        //     return {};
+        //   }
+
+        //   return response.json();
+        // })
+        .then(result => {
+          console.log(`Wine Id ${wineId}`, result);
+          dispatch(commonActions.receiveWine(result.data.vintages[0]));
         })
         .catch(error => console.log(error));
     }
