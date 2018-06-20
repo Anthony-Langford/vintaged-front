@@ -15,7 +15,7 @@ function ProductCard(props) {
   return (
     <Card>
       <Column>
-        <Heart />
+        <Heart id={wine.id} />
 
         <img src={wine.image_thumb_url} height="200px" width="150px" />
         
