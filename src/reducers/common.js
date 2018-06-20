@@ -21,13 +21,11 @@ function common(state = {
       lastUpdated: action.receivedAt,
     };
   }
-  case 'RECEIVE_WINE' : {
-    const id = action.wine.id
-    
+  case 'RECEIVE_WINE' : {    
     return {
       ...state,
       isFetching: false,
-      [id]: action.wine,
+      [action.wine.id]: action.wine,
       lastUpdated: action.receivedAt,
     };
   }
