@@ -20,50 +20,67 @@ const commonActions = {
 
   fetchWines: () => (
     dispatch => {
-      dispatch(commonActions.requestWines());
-      return client
-        .query({
-          query: gql`
-            {
-              vintages { id name heat }
-            }
-          `
-        })
-        // .then((response) => {
-        //   // Return an empty object if there are no wines
-        //   if (response.status === 404) {
-        //     return {};
-        //   }
+      dispatch(commonActions.requestWines())
 
-        //   return response.json();
-        // })
+      const GET_WINES = gql`
+        {
+          vintages {
+            id
+            name
+            heat
+            image_url
+            image_thumb_url
+            tasting_note
+            price_in_cents
+            volume_in_milliliters
+            alcohol_content
+            product_no
+            origin
+            secondary_category
+            varietal
+            style
+            producer_name
+          }
+        }
+      `
+
+      return client
+        .query({ query: GET_WINES })
         .then(result => {
-          dispatch(commonActions.receiveWines(result.data.vintages));
+          dispatch(commonActions.receiveWines(result.data.vintages))
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
     }
   ),
 
   fetchWine: wineId => (
     dispatch => {
-      return client
-        .query({
-          query: gql`
-            {
-              vintages(id: "${wineId}") { id name heat }
-            }
-          `
-        })
-        // .then((response) => {
-        //   // Return an empty object if there are no wines
-        //   if (response.status === 404) {
-        //     return {};
-        //   }
 
-        //   return response.json();
-        // })
+      const GET_WINE = gql`
+        {
+          vintages(id: "${wineId}") {
+            id
+            name
+            heat
+            image_url
+            image_thumb_url
+            tasting_note
+            price_in_cents
+            volume_in_milliliters
+            alcohol_content
+            product_no
+            origin
+            secondary_category
+            varietal
+            style
+            producer_name
+          }
+        }
+      `
+
+      return client
+        .query({ query: GET_WINE })
         .then(result => {
-          console.log(`Wine Id ${wineId}`, result);
           dispatch(commonActions.receiveWine(result.data.vintages[0]));
         })
         .catch(error => console.log(error));
