@@ -4,8 +4,10 @@ const Card = styled('div')`
   display: flex;
   overflow: scroll;
   padding: 4px;
+  margin-bottom: 1rem;
   height: min-content;
   max-width: 425px;
+  background: white;
   border: 1px solid rgba(0,0,0,0.2);
   border-radius: 7px;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),
