@@ -4,44 +4,37 @@ import { connect } from 'react-redux'
 
 // Import components
 import Wrapper from './Home/Wrapper'
-import ProductCard from './Home/ProductCard'
-
-// Import helpers
-import store from '../store'
-import { commonActions } from '../actions'
+import CardsList from './Home/CardsList'
 
 class Home extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      wine: null
+      winesFetched: props.common.wines.length
     }
   }
   
   componentDidUpdate(prevProps) {
     if (this.props.common.wines !== prevProps.common.wines) {
-      const wineId = this.props.common.wines[0].id
-
-      store.dispatch(commonActions.fetchWine(wineId))
-        .then(() => {
-          this.setState({
-            wine: this.props.common[wineId]
-          }, () => {
-          })
+      if (this.props.common.wines.length) {
+        this.setState({
+          winesFetched: true
         })
+      }
     }
   }
 
   render() {
-    const wine = this.state.wine
+    const wines = this.props.common.wines.slice(0, 5)
+    const winesFetched = this.state.winesFetched
 
     return (
-      !wine ? (
+      !winesFetched ? (
         <div>Loading...</div>
       ) : (
         <Wrapper>
-          <ProductCard />
+          <CardsList wines={wines} />
         </Wrapper>
       )
     )
