@@ -1,13 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Heart = () => (
+const Heart = props => (
   <div
     css={`
       height: 25px;
     `}
   >
     <input
-      id="toggle-heart"
+      id={`toggle-heart${props.id}`}
       type="checkbox"
       css={`
         position: absolute;
@@ -22,7 +23,7 @@ const Heart = () => (
       `}
     />
     <label
-      htmlFor="toggle-heart"
+      htmlFor={`toggle-heart${props.id}`}
       css={`
         color: #aab8c2;
         width: min-content;
@@ -33,5 +34,10 @@ const Heart = () => (
     </label>
   </div>
 )
+
+// Static type checking for props
+Heart.propTypes = {
+  id: PropTypes.string.isRequired,
+}
 
 export default Heart
