@@ -4,7 +4,7 @@ const Card = styled('div')`
   display: flex;
   overflow: scroll;
   padding: 4px;
-  margin-bottom: 1rem;
+  margin: 0.5rem;
   height: min-content;
   max-width: 425px;
   background: white;
