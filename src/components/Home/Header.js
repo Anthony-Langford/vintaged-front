@@ -44,7 +44,7 @@ function Header() {
             width: 100%;
             font-family: 'Oswald';
             font-size: 32px;
-            color: white;
+            color: #f5f5f5;
           `}
         >
           Vintaged
