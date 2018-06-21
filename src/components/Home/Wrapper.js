@@ -3,10 +3,11 @@ import styled from 'react-emotion'
 const Wrapper = styled('div')`
   display: flex;
   flex-flow: row wrap;
-  height: 100vh;
-  padding: 1rem;
+  width: 100%;
+  min-height: 100%;
   overflow: scroll;
-  background: linear-gradient(170deg, rgba(33,150,243,.95) 10%, rgba(77,208,225,.95) 80%);
+  color: black;
+  // background: linear-gradient(170deg, rgba(230,230,250,.05) 20%, rgba(114,47,55,.05) 10%);
 `
 
 export default Wrapper
