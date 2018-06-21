@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 // Import components
+import Header from './Home/Header'
 import Wrapper from './Home/Wrapper'
-import CardsList from './Home/CardsList'
+import ProductCardsList from './Home/ProductCardsList'
 
 class Home extends React.Component {
   constructor(props) {
@@ -33,9 +34,18 @@ class Home extends React.Component {
       !winesFetched ? (
         <div>Loading...</div>
       ) : (
-        <Wrapper>
-          <CardsList wines={wines} />
-        </Wrapper>
+        <div
+          css={`
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+          `}
+        >
+          <Header />
+          <Wrapper>
+            <ProductCardsList wines={wines} />
+          </Wrapper>
+        </div>
       )
     )
   }
