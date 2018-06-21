@@ -33,6 +33,7 @@
       "imports": "never",
       "exports": "never",
       "functions": "ignore"
-  }]
+    }],
+    "react/display-name": [0, { "ignoreTranspilerName": 0 }]
   }
 }
