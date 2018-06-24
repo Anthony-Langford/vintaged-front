@@ -1,4 +1,4 @@
-const API_URL = 'http://159.203.33.225/graphiql';
+const API_URL = 'https://159.203.33.225/graphiql';
 
 const API = {
   WINES: API_URL
