@@ -29,6 +29,13 @@ function common(state = {
       lastUpdated: action.receivedAt,
     };
   }
+  case 'RECEIVE_LOCATION': {
+    return {
+      ...state,
+      lat: action.lat,
+      lon: action.lon
+    }
+  }
   case 'CLEAR_STORE': {
     return {
       isFetching: false,
