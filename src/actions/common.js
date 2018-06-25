@@ -18,16 +18,26 @@ const commonActions = {
     receivedAt: Date.now(),
   }),
 
-  fetchWines: () => (
+  fetchWines: (lat, lon) => (
     dispatch => {
       dispatch(commonActions.requestWines())
 
       const GET_WINES = gql`
         {
-          vintages {
+          vintages(  
+            limit: 20
+            skip: 0
+            filter: "{'heat': {'$gte': 2.5},'sold': {'$gte': 10},'price_in_cents': {'$gte': 1500},'release_units': {'$gte': 200},'inventory_count': {'$gte': 20}}"
+            sort: "{'heat': -1}"
+          )
+          {
             id
             name
             heat
+            store_LAPI(lat: ${lat} lon: ${lon}) {
+              store_id
+              quantity
+            }
             image_url
             image_thumb_url
             tasting_note
@@ -94,6 +104,14 @@ const commonActions = {
       receivedAt: Date.now(),
     })
   },
+
+  storeLocation: (lat, lon) => (
+    {
+      type: 'RECEIVE_LOCATION',
+      lat,
+      lon
+    }
+  ),
 
   clearStore: () => ({
     type: 'CLEAR_STORE',
