@@ -12,7 +12,24 @@ import HomeContainer from './Home'
 
 store.subscribe(() => {})
 
-store.dispatch(commonActions.fetchWines())
+if ("geolocation" in navigator) {
+  /* geolocation is available */
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const lat = position.coords.latitude
+      const lon = position.coords.longitude
+
+      store.dispatch(commonActions.receiveLocation(lat, lon))
+      store.dispatch(commonActions.fetchWines(lat, lon))
+      
+      console.log(`I know where you are 🤫🤡🤐👽👀👁👁🔭 lat ${lat}°, lon ${lon}°`)
+    }
+  )
+} else {
+  /* geolocation is not available */
+  console.log('Geolocation is not available');
+  store.dispatch(commonActions.fetchWines())
+}
 
 const Home = () => <HomeContainer />
 
