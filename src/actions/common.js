@@ -34,10 +34,10 @@ const commonActions = {
             id
             name
             heat
-            store_LAPI(lat: ${lat} lon: ${lon}) {
+            ${(lat && lon) ? `store_LAPI(lat: ${lat} lon: ${lon}) {
               store_id
               quantity
-            }
+            }` : ''}
             image_url
             image_thumb_url
             tasting_note
