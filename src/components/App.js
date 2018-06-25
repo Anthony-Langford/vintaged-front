@@ -27,7 +27,7 @@ if ("geolocation" in navigator) {
   )
 } else {
   /* geolocation is not available */
-  console.log('Geolocation is not available');
+  console.log('Geolocation is not available')
   store.dispatch(commonActions.fetchWines())
 }
 
