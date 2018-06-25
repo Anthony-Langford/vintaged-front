@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import ProductCard from './ProductCard'
 
 function ProductCardsList(props) {
-  const wines = props.wines;
+  const wines = props.wines
+  const filteredWines = wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5)
 
   return (
     <div
@@ -15,9 +16,7 @@ function ProductCardsList(props) {
         flex-flow: row wrap;
       `}
     >
-      {wines.map(wine => 
-        <ProductCard wine={wine} key={wine.id} />
-      )}
+      {filteredWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
     </div>
   )
 }
