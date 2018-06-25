@@ -2,7 +2,7 @@ import styled from 'react-emotion'
 
 const Card = styled('div')`
   display: flex;
-  overflow: scroll;
+  overflow: auto;
   padding: 4px;
   margin: 0.5rem;
   height: 415px;
