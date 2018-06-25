@@ -31,16 +31,16 @@ class Home extends React.Component {
     const winesFetched = this.state.winesFetched
 
     return (
-      !winesFetched ? (
-        <div>Loading...</div>
-      ) : (
-        <React.Fragment>
-          <Header />
-          <Wrapper>
+      <React.Fragment>
+        <Header />
+        <Wrapper>
+          {!winesFetched ? (
+            <div>Loading...</div>
+          ) : (
             <ProductCardsList wines={wines} />
-          </Wrapper>
-        </React.Fragment>
-      )
+          )}
+        </Wrapper>
+      </React.Fragment>
     )
   }
 }
