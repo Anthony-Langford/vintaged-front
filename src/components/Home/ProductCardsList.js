@@ -6,7 +6,10 @@ import ProductCard from './ProductCard'
 
 function ProductCardsList(props) {
   const wines = props.wines
-  const filteredWines = wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5)
+
+  const filteredWines = wines[0].store_LAPI ?
+    wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5) :
+    wines.slice(0, 5)
 
   return (
     <div
