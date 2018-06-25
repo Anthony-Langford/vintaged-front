@@ -14,17 +14,24 @@ store.subscribe(() => {})
 
 if ("geolocation" in navigator) {
   /* geolocation is available */
-  navigator.geolocation.getCurrentPosition(
-    position => {
-      const lat = position.coords.latitude
-      const lon = position.coords.longitude
+  const successCallback = position => {
+    const lat = position.coords.latitude
+    const lon = position.coords.longitude
 
-      store.dispatch(commonActions.receiveLocation(lat, lon))
-      store.dispatch(commonActions.fetchWines(lat, lon))
-      
-      console.log(`I know where you are 🤫🤡🤐👽👀👁👁🔭 lat ${lat}°, lon ${lon}°`)
-    }
-  )
+    store.dispatch(commonActions.receiveLocation(lat, lon))
+    store.dispatch(commonActions.fetchWines(lat, lon))
+    
+    console.log(`I know where you are 🤫🤡🤐👽👀👁👁🔭 lat ${lat}°, lon ${lon}°`)
+  }
+
+  const errorCallback = error => {
+    console.log('ERROR(' + error.code + '): ' + error.message);
+    store.dispatch(commonActions.fetchWines())
+  }
+
+  const options = { timeout: 27000 }
+
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options)
 } else {
   /* geolocation is not available */
   console.log('Geolocation is not available')
