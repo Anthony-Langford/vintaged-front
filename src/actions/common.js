@@ -105,7 +105,7 @@ const commonActions = {
     })
   },
 
-  storeLocation: (lat, lon) => (
+  receiveLocation: (lat, lon) => (
     {
       type: 'RECEIVE_LOCATION',
       lat,
