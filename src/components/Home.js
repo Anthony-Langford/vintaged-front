@@ -13,7 +13,7 @@ class Home extends React.Component {
 
     this.state = {
       winesFetched: props.common.wines.length
-    }
+    }    
   }
   
   componentDidUpdate(prevProps) {
@@ -27,25 +27,19 @@ class Home extends React.Component {
   }
 
   render() {
-    const wines = this.props.common.wines.slice(0, 5)
+    const wines = this.props.common.wines
     const winesFetched = this.state.winesFetched
 
     return (
       !winesFetched ? (
         <div>Loading...</div>
       ) : (
-        <div
-          css={`
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-          `}
-        >
+        <React.Fragment>
           <Header />
           <Wrapper>
             <ProductCardsList wines={wines} />
           </Wrapper>
-        </div>
+        </React.Fragment>
       )
     )
   }
