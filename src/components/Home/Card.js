@@ -5,7 +5,7 @@ const Card = styled('div')`
   overflow: auto;
   padding: 4px;
   margin: 0.5rem;
-  height: 415px;
+  min-height: 389px;
   max-width: 425px;
   background: white;
   border: 1px solid rgba(0,0,0,0.2);
