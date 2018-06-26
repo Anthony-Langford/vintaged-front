@@ -7,6 +7,11 @@ import Header from './Home/Header'
 import Wrapper from './Home/Wrapper'
 import ProductCardsList from './Home/ProductCardsList'
 
+// Import helper functions
+import getCurrentLocation from '../helpers/getCurrentLocation'
+
+getCurrentLocation()
+
 class Home extends React.Component {
   constructor(props) {
     super(props)
