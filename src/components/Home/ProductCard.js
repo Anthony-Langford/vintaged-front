@@ -7,7 +7,6 @@ import Row from './Row'
 import Column from './Column'
 import Text from './Text'
 import Title from './Title'
-import Heart from './Heart'
 
 function ProductCard(props) {
   const wine = props.wine
@@ -15,7 +14,6 @@ function ProductCard(props) {
   return (
     <Card>
       <Column>
-        <Heart id={wine.id} />
 
         <img src={wine.image_thumb_url} height="200px" width="150px" />
         
