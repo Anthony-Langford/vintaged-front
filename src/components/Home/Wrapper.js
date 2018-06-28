@@ -1,14 +1,12 @@
 import styled from 'react-emotion'
 
 const Wrapper = styled('div')`
-  position: relative;
-  top: 68px;
+  flex: 1;
   display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  color: black;
+  flex-direction: column;
+  color: #1e2029;
+  background: #FFFEFF;
+  border-radius: 2px;
 `
 
 export default Wrapper
