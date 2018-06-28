@@ -5,13 +5,7 @@ import { connect } from 'react-redux'
 // Import components
 import Header from './Home/Header'
 import Wrapper from './Home/Wrapper'
-import ProductCardsList from './Home/ProductCardsList'
-import NavigationLogo from './Home/NavigationLogo'
-
-// Import helper functions
-import getCurrentLocation from '../helpers/getCurrentLocation'
-
-getCurrentLocation()
+import HomeContent from './Home/HomeContent'
 
 class Home extends React.Component {
   constructor(props) {
@@ -37,17 +31,13 @@ class Home extends React.Component {
     const winesFetched = this.state.winesFetched
 
     return (
-      <React.Fragment>
+      <Wrapper>
         <Header />
-        <Wrapper>
-          {!winesFetched ? (
-            <div>Loading...</div>
-          ) : (
-            <ProductCardsList wines={wines} />
-          )}
-        </Wrapper>
-        <NavigationLogo />
-      </React.Fragment>
+        <HomeContent
+          wines={wines}
+          winesFetched={winesFetched}
+        />
+      </Wrapper>
     )
   }
 }
