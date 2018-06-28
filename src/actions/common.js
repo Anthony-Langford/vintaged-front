@@ -24,13 +24,12 @@ const commonActions = {
 
       const GET_WINES = gql`
         {
-          vintages(  
+          vintages(
             limit: 30
             skip: 0
             filter: "{'heat': {'$gte': 2.5},'sold': {'$gte': 10},'price_in_cents': {'$gte': 1500},'release_units': {'$gte': 200},'inventory_count': {'$gte': 20}}"
             sort: "{'heat': -1}"
-          )
-          {
+          ) {
             id
             name
             heat
@@ -112,6 +111,34 @@ const commonActions = {
       lon
     }
   ),
+
+  fetchStores: () => (
+    dispatch => {
+      const GET_STORES = gql`
+        {
+          stores() {
+            id
+            name
+          }
+        }
+      `
+
+      return client
+        .query({ query: GET_STORES })
+        .then(result => {
+          dispatch(commonActions.receiveStores(result.data))
+        })
+        .catch(error => console.log(error))
+    }
+  ),
+
+  receiveStores: stores => {    
+    return ({
+      type: 'RECEIVE_STORES',
+      stores,
+      receivedAt: Date.now(),
+    })
+  },
 
   clearStore: () => ({
     type: 'CLEAR_STORE',
