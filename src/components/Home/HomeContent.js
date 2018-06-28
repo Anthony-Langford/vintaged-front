@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 // Import components
 import ProductCardsList from './ProductCardsList'
-import NavigationLogo from './NavigationLogo'
-import NavigationLinks from './NavigationLinks'
+import NavLogo from './NavLogo'
+import NavLinks from './NavLinks'
 
 function HomeContent(props) {
   const wines = props.wines
@@ -55,7 +55,7 @@ function HomeContent(props) {
           `}>
             <h3>Navigation</h3>
             <nav>
-              <NavigationLinks />
+              <NavLinks />
             </nav>
           </div>
         </div>
@@ -72,7 +72,7 @@ function HomeContent(props) {
             background-color: rgba(0, 0, 0, 0.3);
           `}>
         </div>
-        <NavigationLogo onClick={toggleNav} />
+        <NavLogo onClick={toggleNav} />
       </div>
     </div>
   )

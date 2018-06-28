@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const NavigationLogo = (props) => (
+const NavLogo = (props) => (
   <button
     onClick={props.onClick}
     css={`
@@ -38,8 +38,8 @@ const NavigationLogo = (props) => (
 )
 
 // Static type checking for props
-NavigationLogo.propTypes = {
+NavLogo.propTypes = {
   onClick: PropTypes.func.isRequired,
 }
 
-export default NavigationLogo
+export default NavLogo

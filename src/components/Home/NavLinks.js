@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, Match } from "@reach/router";
 
-export default function NavigationLinks() {
+export default function NavLinks() {
   const links = [
     { name: 'Home', link: "/" },
-    { name: 'Test', link: "/test " }
+    { name: 'Test', link: "/test" },
   ]
 
   return links.map(obj => (
@@ -20,6 +20,7 @@ export default function NavigationLinks() {
               margin: 16px;
               font-size: 16px;
               color: inherit;
+              font-weight: bold;
               ::before {
                 content: '';
                 height: 32px;
@@ -55,6 +56,6 @@ export default function NavigationLinks() {
 }
 
 // Static type checking for props
-NavigationLinks.propTypes = {
+NavLinks.propTypes = {
   match: PropTypes.object
 }
