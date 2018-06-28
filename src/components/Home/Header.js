@@ -9,9 +9,6 @@ function Header() {
     <div
       label="Header"
       css={`
-        position: fixed;
-        z-index: 1;
-        width: 100%;
         background: #1D2029;
       `}
     >
