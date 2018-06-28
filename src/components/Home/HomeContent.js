@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from "@reach/router";
 
 // Import components
 import ProductCardsList from './ProductCardsList'
 import NavigationLogo from './NavigationLogo'
+import NavigationLinks from './NavigationLinks'
 
 function HomeContent(props) {
   const wines = props.wines
@@ -44,7 +44,7 @@ function HomeContent(props) {
             position: absolute;
             top: 0px;
             bottom: 0px;
-            transition: -webkit-transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
             will-change: transform;
             overflow-y: auto;
             right: 0px;
@@ -55,32 +55,7 @@ function HomeContent(props) {
           `}>
             <h3>Navigation</h3>
             <nav>
-              <Link
-                to="/#"
-                css={`
-                  display: block;
-                  -webkit-text-decoration: none;
-                  text-decoration: none;
-                  margin: 16px;
-                  font-size: 16px;
-                  color: inherit;
-                `}
-              >
-                Home
-              </Link>
-              <Link
-                to="/test"
-                css={`
-                  display: block;
-                  -webkit-text-decoration: none;
-                  text-decoration: none;
-                  margin: 16px;
-                  font-size: 16px;
-                  color: inherit;
-                `}
-              >
-                Test
-              </Link>
+              <NavigationLinks />
             </nav>
           </div>
         </div>
@@ -108,7 +83,7 @@ HomeContent.propTypes = {
   wines: PropTypes.array.isRequired,
   winesFetched: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
   openNav: PropTypes.bool.isRequired,
-  toggleNav: PropTypes.func.isRequired
+  toggleNav: PropTypes.func.isRequired,
 }
 
 export default HomeContent
