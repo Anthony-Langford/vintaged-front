@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 // Import components
 import Card from './Card'
-import Row from './Row'
+// import Row from './Row'
 import Column from './Column'
 import Text from './Text'
 import Title from './Title'
@@ -17,47 +17,55 @@ function ProductCard(props) {
 
         <img src={wine.image_thumb_url} height="200px" width="150px" />
         
-        <Row>
-          <Column>
-            <Text>
-              Price: ${wine.price_in_cents/100}
-            </Text>
+        <Column>
+          <Text>
+            Price: ${wine.price_in_cents/100}
+          </Text>
 
-            <Text>
-              Volume: {wine.volume_in_milliliters}mL
-            </Text>
+          {/* <Text>
+            Volume: {wine.volume_in_milliliters}mL
+          </Text>
 
-            <Text>
-              ABV: {wine.alcohol_content/100}%
-            </Text>
+          <Text>
+            ABV: {wine.alcohol_content/100}%
+          </Text>
 
-            <Text>
-              Product #: {wine.product_no}
-            </Text>
-          </Column>
+          <Text>
+            Product #: {wine.product_no}
+          </Text> */}
+        </Column>
 
-          <Column>
-            <Text>
-              Origin: {wine.origin}
-            </Text>
+        <Column>
+          <Text>
+            Origin: {wine.origin}
+          </Text>
 
-            <Text>
-              Category: {wine.secondary_category}
-            </Text>
+          <Text>
+            Category: {wine.secondary_category}
+          </Text>
 
-            <Text>
-              Type: {wine.varietal}
-            </Text>
+          <Text>
+            Type: {wine.varietal}
+          </Text>
 
+          {wine.store_LAPI ? 
             <Text>
-              Style: {wine.style}
-            </Text>
+              Store: {wine.store_LAPI.store_id}
+            </Text> : ''
+          }
 
-            <Text>
-              Producer: {wine.producer_name}
-            </Text>
-          </Column>
-        </Row>
+          <Text>
+            Heat: {wine.heat}{wine.heat > 5 && '🔥'}
+          </Text>
+
+          {/* <Text>
+            Style: {wine.style}
+          </Text>
+
+          <Text>
+            Producer: {wine.producer_name}
+          </Text> */}
+        </Column>
       </Column>
 
       <Column>
