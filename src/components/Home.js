@@ -12,8 +12,10 @@ class Home extends React.Component {
     super(props)
 
     this.state = {
-      winesFetched: props.common.wines.length
+      winesFetched: props.common.wines.length,
+      openNav: false,
     }
+    this.toggleNav = this.toggleNav.bind(this);
   }
   
   componentDidUpdate(prevProps) {
@@ -26,6 +28,12 @@ class Home extends React.Component {
     }
   }
 
+  toggleNav() {
+    this.setState({
+      openNav: !this.state.openNav
+    }, () => {console.log('hi', this.state)})
+  }
+
   render() {
     const winesFetched = this.state.winesFetched
 
@@ -35,6 +43,8 @@ class Home extends React.Component {
         <HomeContent
           wines={this.props.common.wines}
           winesFetched={winesFetched}
+          toggleNav={this.toggleNav}
+          openNav={this.state.openNav}
         />
       </Wrapper>
     )
