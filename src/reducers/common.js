@@ -3,9 +3,11 @@
 // 1. the action (info about what happened)
 // 2. copy of current state
 
-function common(state = {
-  isFetching: false,
-}, action) {
+export default function common(
+  state = {
+    isFetching: false,
+  },
+  action) {
   switch (action.type) {
   case 'REQUEST_WINES' : {
     return {
@@ -52,5 +54,3 @@ function common(state = {
   }
   }
 }
-
-export default common;
