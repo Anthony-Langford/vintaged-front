@@ -4,8 +4,8 @@ import React from 'react'
 // Import components
 import Logo from './Logo'
 
-function Header() {
-  return(
+export default function Header() {
+  return (
     <div
       label="Header"
       css={`
@@ -50,5 +50,3 @@ function Header() {
     </div>
   )
 }
-
-export default Header
