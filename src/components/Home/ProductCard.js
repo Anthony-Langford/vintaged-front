@@ -8,13 +8,10 @@ import Column from './Column'
 import Text from './Text'
 import Title from './Title'
 
-function ProductCard(props) {
-  const wine = props.wine
-
+export default function ProductCard({ wine }) {
   return (
     <Card>
       <Column>
-
         <img src={wine.image_thumb_url} height="200px" width="150px" />
         
         <Column>
@@ -39,25 +36,20 @@ function ProductCard(props) {
           <Text>
             Origin: {wine.origin}
           </Text>
-
           <Text>
             Category: {wine.secondary_category}
           </Text>
-
           <Text>
             Type: {wine.varietal}
           </Text>
-
           {wine.store_LAPI ? 
             <Text>
               Store: {wine.store_LAPI.store_id}
             </Text> : ''
           }
-
           <Text>
             Released On: {wine.released_on}
           </Text>
-
           <Text>
             Heat: {wine.heat}{wine.heat > 5 && '🔥'}
           </Text>
@@ -74,7 +66,6 @@ function ProductCard(props) {
 
       <Column>
         <Title>{wine.name}</Title>
-
         <Text>
           Description: {wine.tasting_note}
         </Text>
@@ -85,7 +76,5 @@ function ProductCard(props) {
 
 // Static type checking for props
 ProductCard.propTypes = {
-  wine: PropTypes.object.isRequired,
+  wine: PropTypes.object.isRequired
 }
-
-export default ProductCard
