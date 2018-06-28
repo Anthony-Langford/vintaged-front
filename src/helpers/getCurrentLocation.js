@@ -4,13 +4,22 @@ import { commonActions } from '../actions'
 
 export default () => {
   if ("geolocation" in navigator) {
-    /* geolocation is available */
+    /* Geolocation is available */
     const successCallback = position => {
       const lat = position.coords.latitude
       const lon = position.coords.longitude
-  
+
+      // Store user's location
       store.dispatch(commonActions.receiveLocation(lat, lon))
-      store.dispatch(commonActions.fetchWines(lat, lon))
+
+      // Check if user is in Ontario
+      if ((52.84 > lat && lat > 45.207486) && (-83.026 > lon > -90)) {
+        console.log('User is in Ontario')
+        // Fetch wines from nearest store to user's location
+        store.dispatch(commonActions.fetchWines(lat, lon))
+      } else {
+        console.log('User is not in Ontario')
+      }
       
       console.log(`I know where you are 🤫🤡🤐👽👀👁👁🔭 lat ${lat}°, lon ${lon}°`)
     }
@@ -24,7 +33,7 @@ export default () => {
   
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options)
   } else {
-    /* geolocation is not available */
-    console.log('Geolocation is not available')
+    /* Geolocation is not available */
+    console.log('Geolocation is not available 👎🏽');
   }
 }
