@@ -55,6 +55,10 @@ function ProductCard(props) {
           }
 
           <Text>
+            Released On: {wine.released_on}
+          </Text>
+
+          <Text>
             Heat: {wine.heat}{wine.heat > 5 && '🔥'}
           </Text>
 
