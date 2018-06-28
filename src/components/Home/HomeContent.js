@@ -4,15 +4,16 @@ import PropTypes from 'prop-types'
 // Import components
 import ProductCardsList from './ProductCardsList'
 import NavLogo from './NavLogo'
-import NavLinks from './NavLinks'
+import Nav from './Nav'
+import NavOverlay from './NavOverlay'
 
-function HomeContent(props) {
-  const wines = props.wines
-  const winesFetched = props.winesFetched
-  const openNav = props.openNav
-  const toggleNav = props.toggleNav
-  
-  return(
+export default function HomeContent({
+  wines,
+  winesFetched,
+  openNav,
+  toggleNav
+}) {
+  return (
     <div css={`
       flex: 1;
     `}>
@@ -39,39 +40,9 @@ function HomeContent(props) {
               <ProductCardsList wines={wines} />
             )}
           </div>
-          <div onClick={toggleNav} css={`
-            z-index: 2;
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-            will-change: transform;
-            overflow-y: auto;
-            right: 0px;
-            transform: translateX(${openNav ? 0 : 100}%);
-            background-color: #f5f5f5;
-            padding: 32px;
-            width: 250px;
-          `}>
-            <h3>Navigation</h3>
-            <nav>
-              <NavLinks />
-            </nav>
-          </div>
+          <Nav toggleNav={toggleNav} openNav={openNav} />
         </div>
-        <div onClick={toggleNav} css={`
-            z-index: 1;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            opacity: ${openNav ? 1 : 0};
-            visibility: ${openNav ? 'visible' : 'hidden'};
-            transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
-            background-color: rgba(0, 0, 0, 0.3);
-          `}>
-        </div>
+        <NavOverlay toggleNav={toggleNav} openNav={openNav} />
         <NavLogo onClick={toggleNav} />
       </div>
     </div>
@@ -85,5 +56,3 @@ HomeContent.propTypes = {
   openNav: PropTypes.bool.isRequired,
   toggleNav: PropTypes.func.isRequired,
 }
-
-export default HomeContent
