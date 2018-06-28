@@ -36,6 +36,12 @@ function common(state = {
       lon: action.lon
     }
   }
+  case 'RECEIVE_STORES': {
+    return {
+      ...state,
+      stores: action.stores,
+    }
+  }
   case 'CLEAR_STORE': {
     return {
       isFetching: false,
