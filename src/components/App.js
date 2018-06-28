@@ -2,23 +2,25 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from "@reach/router"
 
+// Import containers
+import HomeContainer from './Home'
+
 // Import helpers
 import store from '../store'
 import '../styles/normalize.css'
 import { commonActions } from '../actions'
-
-// Import containers
-import HomeContainer from './Home'
+import getCurrentLocation from '../helpers/getCurrentLocation'
 
 store.subscribe(() => {})
 
 store.dispatch(commonActions.fetchWines())
+getCurrentLocation()
 
 const Home = () => <HomeContainer />
 
 const App = () =>
   <Provider store={store}>
-    <Router>
+    <Router id="router">
       <Home path="/" />
     </Router>
   </Provider>
