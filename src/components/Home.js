@@ -31,7 +31,7 @@ class Home extends React.Component {
   toggleNav() {
     this.setState({
       openNav: !this.state.openNav
-    }, () => {console.log('hi', this.state)})
+    })
   }
 
   render() {
