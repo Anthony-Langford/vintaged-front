@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 // Import components
 import ProductCardsList from './ProductCardsList'
-import NavLogo from './NavLogo'
 import Nav from './Nav'
+import NavLogo from './NavLogo'
 import NavOverlay from './NavOverlay'
 
 export default function HomeContent({
@@ -40,9 +40,12 @@ export default function HomeContent({
               <ProductCardsList wines={wines} />
             )}
           </div>
+
           <Nav toggleNav={toggleNav} openNav={openNav} />
         </div>
+        
         <NavOverlay toggleNav={toggleNav} openNav={openNav} />
+
         <NavLogo onClick={toggleNav} />
       </div>
     </div>

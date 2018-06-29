@@ -35,14 +35,12 @@ class Home extends React.Component {
   }
 
   render() {
-    const winesFetched = this.state.winesFetched
-
     return (
       <Wrapper>
         <Header />
         <HomeContent
           wines={this.props.common.wines}
-          winesFetched={winesFetched}
+          winesFetched={this.state.winesFetched}
           toggleNav={this.toggleNav}
           openNav={this.state.openNav}
         />

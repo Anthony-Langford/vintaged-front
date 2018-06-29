@@ -24,7 +24,8 @@ export default function Nav({
         background-color: #f5f5f5;
         padding: 32px;
         width: 250px;
-    `}>
+      `}
+    >
       <h3>Navigation</h3>
       <nav>
         <NavLinks />
