@@ -1,6 +1,29 @@
 import React from 'react'
+import { css } from 'emotion'
 import PropTypes from 'prop-types'
 import { Link, Match } from "@reach/router";
+
+const base = css`
+  display: block;
+  text-decoration: none;
+  margin: 16px;
+  font-size: 16px;
+  color: inherit;
+`
+
+const active = css`
+  font-weight: bold;
+  ::before {
+    content: '';
+    height: 32px;
+    width: 8px;
+    margin-right: 16px;
+    transform: translateX(-32px) translateY(-8px);
+    position: absolute;
+    display: inline-block;
+    background-color: #AD1457;
+  }
+`
 
 export default function NavLinks() {
   const links = [
@@ -14,23 +37,10 @@ export default function NavLinks() {
         props.match ? (
           <Link
             to={obj.link}
-            css={`
-              display: block;
-              text-decoration: none;
-              margin: 16px;
-              font-size: 16px;
-              color: inherit;
-              font-weight: bold;
-              ::before {
-                content: '';
-                height: 32px;
-                width: 8px;
-                margin-right: 16px;
-                transform: translateX(-32px) translateY(-8px);
-                position: absolute;
-                display: inline-block;
-                background-color: #AD1457;
-              }
+            aria-current="true"
+            className={css`
+              ${base};
+              ${active};
             `}
           >
             {obj.name}
@@ -38,13 +48,9 @@ export default function NavLinks() {
         ) : (
           <Link
             to={obj.link}
+            aria-current="false"
             css={`
-              display: block;
-              text-decoration: none;
-              margin: 16px;
-              font-size: 16px;
-              color: inherit;
-              }
+              ${base};
             `}
           >
             {obj.name}
