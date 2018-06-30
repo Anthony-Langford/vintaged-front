@@ -10,6 +10,7 @@ export default function Nav({
 }) {
   return (
     <div
+      label="NavBar"
       onClick={toggleNav}
       css={`
         z-index: 2;
