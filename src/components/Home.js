@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import store from '../store'
 
 // Import components
 import Header from './Home/Header'
 import Wrapper from './Home/Wrapper'
 import HomeContent from './Home/HomeContent'
+
+// Import actions
+import { uiActions } from '../actions'
 
 class Home extends React.Component {
   constructor(props) {
@@ -13,7 +17,6 @@ class Home extends React.Component {
 
     this.state = {
       winesFetched: props.common.wines.length,
-      openNav: false,
     }
     this.toggleNav = this.toggleNav.bind(this);
   }
@@ -29,9 +32,7 @@ class Home extends React.Component {
   }
 
   toggleNav() {
-    this.setState({
-      openNav: !this.state.openNav
-    })
+    store.dispatch(uiActions.toggleNav(!this.props.ui.openNav))
   }
 
   render() {
@@ -42,7 +43,7 @@ class Home extends React.Component {
           wines={this.props.common.wines}
           winesFetched={this.state.winesFetched}
           toggleNav={this.toggleNav}
-          openNav={this.state.openNav}
+          openNav={this.props.ui.openNav}
         />
       </Wrapper>
     )
@@ -58,7 +59,8 @@ function mapStateToProps(state) {
 // Static type checking for props
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  common: PropTypes.object
+  common: PropTypes.object,
+  ui: PropTypes.object.isRequired,
 }
 
 // Set default value for prop if not required and not present
