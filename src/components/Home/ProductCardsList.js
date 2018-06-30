@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 // Import components
 import ProductCard from './ProductCard'
 
-export default function ProductCardsList({ wines }) {
+export default function ProductCardsList({
+  wines
+}) {
 
   // Filter by store-specific inventory data if possible
   const filteredWines = wines[0].store_LAPI ?
