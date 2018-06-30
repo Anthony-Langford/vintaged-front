@@ -6,17 +6,19 @@ import store from '../store'
 // Import components
 import Header from './Home/Header'
 import Wrapper from './Home/Wrapper'
-import HomeContent from './Home/HomeContent'
+import NavWrapper from './Home/NavWrapper'
+import ProductCardsList from './Home/ProductCardsList'
 
 // Import actions
 import { uiActions } from '../actions'
+import LoaderWrapper from './Home/LoaderWrapper';
 
 class Home extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      winesFetched: props.common.wines.length,
+      winesFetched: false,
     }
     this.toggleNav = this.toggleNav.bind(this);
   }
@@ -39,12 +41,16 @@ class Home extends React.Component {
     return (
       <Wrapper>
         <Header />
-        <HomeContent
-          wines={this.props.common.wines}
-          winesFetched={this.state.winesFetched}
+        <NavWrapper
           toggleNav={this.toggleNav}
           openNav={this.props.ui.openNav}
-        />
+        >
+          <LoaderWrapper
+            winesFetched={this.state.winesFetched}
+          >
+            <ProductCardsList wines={this.props.common.wines} />
+          </LoaderWrapper>
+        </NavWrapper>
       </Wrapper>
     )
   }
