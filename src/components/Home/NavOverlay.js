@@ -7,6 +7,7 @@ export default function NavOverlay({
 }) {
   return (
     <div
+      label="NavOverlay"
       onClick={toggleNav}
       css={`
         z-index: 1;
