@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function NavButton(props) {
+export default function NavButton({ onClick }) {
   return (
     <button
       label="NavButton"
-      onClick={props.onClick}
+      onClick={onClick}
       css={`
         position: fixed;
         bottom: 0px;

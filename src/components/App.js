@@ -14,14 +14,13 @@ import getCurrentLocation from '../helpers/getCurrentLocation'
 store.subscribe(() => {})
 
 store.dispatch(commonActions.fetchWines())
-getCurrentLocation()
 
-const Home = () => <HomeContainer />
+getCurrentLocation()
 
 const App = () =>
   <Provider store={store}>
     <Router id="router">
-      <Home path="/" />
+      <HomeContainer path="/" />
     </Router>
   </Provider>
 

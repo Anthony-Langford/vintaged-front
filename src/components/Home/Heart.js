@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function Heart(props) {
+export default function Heart({ id }) {
   return (
     <div
       css={`
@@ -9,7 +9,7 @@ export default function Heart(props) {
       `}
     >
       <input
-        id={`toggle-heart${props.id}`}
+        id={`toggle-heart${id}`}
         type="checkbox"
         css={`
           position: absolute;
@@ -24,7 +24,7 @@ export default function Heart(props) {
         `}
       />
       <label
-        htmlFor={`toggle-heart${props.id}`}
+        htmlFor={`toggle-heart${id}`}
         css={`
           color: #aab8c2;
           width: min-content;

@@ -1,6 +1,6 @@
 import styled from 'react-emotion'
 
-const Card = styled('div')`
+export default styled('div')`
   display: flex;
   overflow: auto;
   padding: 4px;
@@ -19,5 +19,3 @@ const Card = styled('div')`
     border: 1px solid rgba(29,32,41,0.7);
   }
 `
-
-export default Card
