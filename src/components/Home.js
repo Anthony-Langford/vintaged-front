@@ -11,7 +11,7 @@ import ProductCardsList from './Home/ProductCardsList'
 
 // Import actions
 import { uiActions } from '../actions'
-import LoaderWrapper from './Home/LoaderWrapper';
+import LoaderWrapper from './Home/LoaderWrapper'
 
 class Home extends React.Component {
   constructor(props) {
@@ -41,13 +41,8 @@ class Home extends React.Component {
     return (
       <Wrapper>
         <Header />
-        <NavWrapper
-          toggleNav={this.toggleNav}
-          openNav={this.props.ui.openNav}
-        >
-          <LoaderWrapper
-            winesFetched={this.state.winesFetched}
-          >
+        <NavWrapper toggleNav={this.toggleNav} openNav={this.props.ui.openNav} >
+          <LoaderWrapper winesFetched={this.state.winesFetched} >
             <ProductCardsList wines={this.props.common.wines} />
           </LoaderWrapper>
         </NavWrapper>
@@ -58,7 +53,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    ...state,
+    ...state
   }
 }
 
