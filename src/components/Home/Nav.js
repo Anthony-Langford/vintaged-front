@@ -6,7 +6,7 @@ import NavLinks from './NavLinks'
 
 export default function Nav({
   toggleNav,
-  openNav
+  navState
 }) {
   return (
     <div
@@ -21,7 +21,7 @@ export default function Nav({
         will-change: transform;
         overflow-y: auto;
         right: 0px;
-        transform: translateX(${openNav ? 0 : 100}%);
+        transform: translateX(${navState ? 0 : 100}%);
         background-color: #f5f5f5;
         padding: 32px;
         width: 250px;
@@ -38,5 +38,5 @@ export default function Nav({
 // Static type checking for props
 Nav.propTypes = {
   toggleNav: PropTypes.func.isRequired,
-  openNav: PropTypes.bool.isRequired
+  navState: PropTypes.bool.isRequired
 }

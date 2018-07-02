@@ -4,5 +4,4 @@ export default styled('div')`
   display: flex;
   flex-direction: column;
   margin: 4px;
-  height: min-content;
 `

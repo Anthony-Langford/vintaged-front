@@ -30,7 +30,7 @@ const ContentWrapper = styled('div')`
 `
 
 export default function NavWrapper({
-  openNav,
+  navState,
   toggleNav,
   children
 }) {
@@ -42,10 +42,10 @@ export default function NavWrapper({
             {children}
           </ContentWrapper>
 
-          <Nav toggleNav={toggleNav} openNav={openNav} />
+          <Nav toggleNav={toggleNav} navState={navState} />
         </InnerNavWrapper>
         
-        <NavOverlay toggleNav={toggleNav} openNav={openNav} />
+        <NavOverlay toggleNav={toggleNav} navState={navState} />
 
         <NavButton onClick={toggleNav} />
       </div>
@@ -55,7 +55,7 @@ export default function NavWrapper({
 
 // Static type checking for props
 NavWrapper.propTypes = {
-  openNav: PropTypes.bool.isRequired,
+  navState: PropTypes.bool.isRequired,
   toggleNav: PropTypes.func.isRequired,
   children: PropTypes.node
 }

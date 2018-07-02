@@ -34,14 +34,14 @@ class Home extends React.Component {
   }
 
   toggleNav() {
-    store.dispatch(uiActions.toggleNav(!this.props.ui.openNav))
+    store.dispatch(uiActions.toggleNav(!this.props.ui.navState))
   }
 
   render() {
     return (
       <Wrapper>
         <Header />
-        <NavWrapper toggleNav={this.toggleNav} openNav={this.props.ui.openNav} >
+        <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState} >
           <LoaderWrapper winesFetched={this.state.winesFetched} >
             <ProductCardsList wines={this.props.common.wines} />
           </LoaderWrapper>
