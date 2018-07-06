@@ -34,7 +34,7 @@ export default function NavWrapper({
   toggleNav,
   children
 }) {
-  return (
+  return(
     <FlexWrapper>
       <div label="OuterNavWrapper">
         <InnerNavWrapper>
