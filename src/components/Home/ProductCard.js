@@ -9,7 +9,7 @@ import Text from './Text'
 import Title from './Title'
 
 export default function ProductCard({ wine }) {
-  return (
+  return(
     <Card>
       <Column>
         <img src={wine.image_thumb_url} height="200px" width="150px" />
@@ -42,7 +42,7 @@ export default function ProductCard({ wine }) {
           <Text>
             Type: {wine.varietal}
           </Text>
-          {wine.store_LAPI ? 
+          {wine.store_LAPI && wine.store_LAPI.store_id ? 
             <Text>
               Store: {wine.store_LAPI.store_id}
             </Text> : ''
