@@ -5,7 +5,7 @@ export default function NavOverlay({
   toggleNav,
   navState
 }) {
-  return (
+  return(
     <div
       label="NavOverlay"
       onClick={toggleNav}
