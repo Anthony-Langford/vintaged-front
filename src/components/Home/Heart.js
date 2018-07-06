@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function Heart({ id }) {
-  return (
+  return(
     <div
       css={`
         height: 25px;
