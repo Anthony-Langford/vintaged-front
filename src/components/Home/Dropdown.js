@@ -13,6 +13,9 @@ const DropdownWrapper = styled('div')`
   margin: 0 0 0 6px;
   position: absolute;
   width: 175px;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const TitleWrapper = styled('div')`
