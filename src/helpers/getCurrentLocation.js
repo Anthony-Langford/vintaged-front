@@ -13,7 +13,7 @@ export default () => {
       store.dispatch(commonActions.receiveLocation(lat, lon))
 
       // Check if user is in Ontario
-      if ((52.84 > lat && lat > 45.207486) && (-83.026 > lon > -90)) {
+      if ((52.84 > lat && lat > 42) && (-83.026 > lon > -90)) {
         console.log('User is in Ontario')
         // Fetch wines from nearest store to user's location
         store.dispatch(commonActions.fetchWines(lat, lon))
@@ -21,7 +21,7 @@ export default () => {
         console.log('User is not in Ontario')
       }
       
-      console.log(`I know where you are 🤫🤡🤐👽👀👁👁🔭 lat ${lat}°, lon ${lon}°`)
+      console.log(`lat ${lat}°, lon ${lon}°`)
     }
   
     const errorCallback = error => {
