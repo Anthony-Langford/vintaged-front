@@ -98,7 +98,7 @@ const commonActions = {
   ),
 
   receiveWine: wine => {    
-    return ({
+    return({
       type: 'RECEIVE_WINE',
       wine,
       receivedAt: Date.now(),
@@ -134,7 +134,7 @@ const commonActions = {
   ),
 
   receiveStores: stores => {    
-    return ({
+    return({
       type: 'RECEIVE_STORES',
       stores,
       receivedAt: Date.now(),
