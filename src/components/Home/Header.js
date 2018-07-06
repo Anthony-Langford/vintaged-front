@@ -38,7 +38,7 @@ export default () => (
         css={`
           margin: 0 0 0 8px;
           width: 100%;
-          font-family: 'Oswald';
+          font-family: Cursive;
           font-size: 32px;
           color: #f5f5f5;
         `}
