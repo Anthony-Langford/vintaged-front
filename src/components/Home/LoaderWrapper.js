@@ -5,7 +5,7 @@ export default function LoaderWrapper({
   winesFetched,
   children
 }) {
-  return (
+  return(
     winesFetched ? (
       children
     ) : <div>Loading...</div>
