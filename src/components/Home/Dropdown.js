@@ -70,7 +70,12 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { title, list, toggleItem } = this.props
+    const {
+      title,
+      list,
+      toggleItem
+    } = this.props
+
     const { isOpen } = this.state
 
     return(
@@ -88,11 +93,9 @@ class Dropdown extends React.Component {
           {isOpen && (
             <List>
               {list.map((item) => (
-                <ListItem css={`list-style: none;`} key={item.id} onClick={() => this.props.toggleItem(item.id, item.key)}>
+                <ListItem css={`list-style: none;`} key={item.id} onClick={() => toggleItem(item.id, item.key)}>
                   <span>{item.title}</span>
-                  {item.selected && (
-                    <span> ✔</span>
-                  )}
+                  {item.selected && <span> ✔</span>}
                 </ListItem>
               ))}
             </List>
