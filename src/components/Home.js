@@ -9,6 +9,7 @@ import Wrapper from './Home/Wrapper'
 import NavWrapper from './Home/NavWrapper'
 import Dropdown from './Home/Dropdown'
 import ProductCardsList from './Home/ProductCardsList'
+import SortItem from './Home/SortItem'
 
 // Import actions
 import { uiActions } from '../actions'
@@ -23,6 +24,7 @@ class Home extends React.Component {
 
     this.state = {
       winesFetched: false,
+      sort: 'heat',
       filters: {
         secondary_category: []
       },
@@ -50,6 +52,7 @@ class Home extends React.Component {
 
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleFilter = this.toggleFilter.bind(this);
+    this.setSort = this.setSort.bind(this);
   }
   
   // Update state upon receiving new props (from redux)
@@ -109,6 +112,12 @@ class Home extends React.Component {
     }
   }
 
+  setSort(e) {
+    this.setState({
+      sort: e.target.value
+    })
+  }
+
   render() {
     return (
       <Wrapper>
@@ -119,7 +128,15 @@ class Home extends React.Component {
           </LoaderWrapper>
         </NavWrapper> */}
         <LoaderWrapper winesFetched={this.state.winesFetched}>
-          <div css={`display: flex; justify-content: start; margin: 0.5rem;`}>
+          <div label="sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
+            <div css={`margin: 8px 0;`}>
+              <span>Sort:</span>
+              <SortItem onClick={this.setSort} title={'Heat'} value={'heat'} selected={this.state.sort === 'heat'} />
+              <SortItem onClick={this.setSort} title={'Price'} value={'price'} selected={this.state.sort === 'price'} />
+            </div>
+          </div>
+
+          <div label="filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
             <div css={`margin: 8px 0;`}>
               <span>Filter:</span>
             </div>
