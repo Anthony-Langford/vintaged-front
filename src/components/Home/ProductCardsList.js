@@ -9,11 +9,13 @@ export default function ProductCardsList({
 }) {
 
   // Filter by store-specific inventory data if possible
-  const filteredWines = wines[0].store_LAPI ?
-    wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5) :
-    wines.slice(0, 5)
+  // const filteredWines = wines[0].store_LAPI ?
+  //   wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5) :
+  //   wines.slice(0, 5)
 
-  return (
+  const filteredWines = wines.slice(0, 5)
+
+  return(
     <div
       label="ProductCardsList"
       css={`
