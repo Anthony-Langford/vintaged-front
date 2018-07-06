@@ -8,7 +8,7 @@ export default function Nav({
   toggleNav,
   navState
 }) {
-  return (
+  return(
     <div
       label="NavBar"
       onClick={toggleNav}
