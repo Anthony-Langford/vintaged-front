@@ -18,8 +18,9 @@ class Home extends React.Component {
     super(props)
 
     this.state = {
-      winesFetched: false,
+      winesFetched: false
     }
+
     this.toggleNav = this.toggleNav.bind(this);
   }
   
@@ -41,11 +42,14 @@ class Home extends React.Component {
     return (
       <Wrapper>
         <Header />
-        <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState} >
+        {/* <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState} >
           <LoaderWrapper winesFetched={this.state.winesFetched} >
             <ProductCardsList wines={this.props.common.wines} />
           </LoaderWrapper>
-        </NavWrapper>
+        </NavWrapper> */}
+        <LoaderWrapper winesFetched={this.state.winesFetched} >
+          <ProductCardsList wines={this.props.common.wines} />
+        </LoaderWrapper>
       </Wrapper>
     )
   }
