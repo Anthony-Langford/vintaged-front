@@ -24,33 +24,35 @@ class Home extends React.Component {
     this.state = {
       winesFetched: false,
       filters: {
-        category: [
-          {
-            id: 0,
-            title: 'Red Wine',
-            selected: false,
-            key: 'category'
-          },
-          {
-            id: 1,
-            title: 'White Wine',
-            selected: false,
-            key: 'category'
-          },
-          {
-            id: 2,
-            title: 'Rosé Wine',
-            selected: false,
-            key: 'category'
-          }
-        ]  
-      }
+        secondary_category: []
+      },
+      secondary_category: [
+        {
+          id: 0,
+          title: 'Red Wine',
+          selected: false,
+          key: 'secondary_category'
+        },
+        {
+          id: 1,
+          title: 'White Wine',
+          selected: false,
+          key: 'secondary_category'
+        },
+        {
+          id: 2,
+          title: 'Rosé Wine',
+          selected: false,
+          key: 'secondary_category'
+        }
+      ]
     }
 
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleFilter = this.toggleFilter.bind(this);
   }
   
+  // Update state upon receiving new props (from redux)
   componentDidUpdate(prevProps) {
     if (this.props.common.wines !== prevProps.common.wines) {
       if (this.props.common.wines.length) {
@@ -65,16 +67,36 @@ class Home extends React.Component {
     store.dispatch(uiActions.toggleNav(!this.props.ui.navState))
   }
 
+  // Update the state upon changing selected filters
   toggleFilter(id, key) {
-    let filterKey = this.state.filters[key]
-    filterKey[id].selected = !filterKey[id].selected
+    // Find the category
+    let secondary_category = this.state[key]
+
+    // Toggle the selected boolean
+    secondary_category[id].selected = !secondary_category[id].selected
+
+    // Find the corresponding filter array
+    let updatedFilters = this.state.filters[key]
+
+    // Update the filter array
+    if (updatedFilters.indexOf(secondary_category[id].title) === -1) {
+      updatedFilters.push(secondary_category[id].title)
+    } else {
+      updatedFilters.splice(updatedFilters.indexOf(secondary_category[id].title), 1)
+    }
+
+    // Update state
     this.setState({
-      [key]: filterKey
+      [key]: secondary_category,
+      filters: {
+        [key]: updatedFilters
+      }
     })
   }
-
+  
+  // Sets the dropdown title depending on selected items
   setTitle(category) {
-    const itemsSelected = this.state.filters[category].filter(item => (item.selected === true)).length
+    const itemsSelected = this.state[category].filter(item => (item.selected === true)).length
 
     if (itemsSelected === 0) {
       return locale.category[0]
@@ -91,8 +113,8 @@ class Home extends React.Component {
     return (
       <Wrapper>
         <Header />
-        {/* <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState} >
-          <LoaderWrapper winesFetched={this.state.winesFetched} >
+        {/* <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
+          <LoaderWrapper winesFetched={this.state.winesFetched}>
             <ProductCardsList wines={this.props.common.wines} />
           </LoaderWrapper>
         </NavWrapper> */}
@@ -101,7 +123,7 @@ class Home extends React.Component {
             <div css={`margin: 8px 0;`}>
               <span>Filter:</span>
             </div>
-            <Dropdown title={this.setTitle('category')} list={this.state.filters.category} toggleItem={this.toggleFilter} />
+            <Dropdown title={this.setTitle('secondary_category')} list={this.state.secondary_category} toggleItem={this.toggleFilter} />
           </div>
           <ProductCardsList filters={this.state.filters} wines={this.props.common.wines} />
         </LoaderWrapper>
