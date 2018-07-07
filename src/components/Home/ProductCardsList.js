@@ -30,8 +30,6 @@ export default function ProductCardsList({
     }
   }
 
-  console.log('filteredWines', filteredWines)
-
   let mapped = filteredWines.map((wine, i) => {
     return {
       index: i,
