@@ -49,7 +49,7 @@ export default function ProductCardsList({
     return 0
   })
 
-  const sortedFilteredWines = mapped.map(function(el){
+  const sortedFilteredWines = mapped.map((el) => {
     return filteredWines[el.index];
   });
 
