@@ -6,6 +6,7 @@ import ProductCard from './ProductCard'
 
 export default function ProductCardsList({
   wines,
+  sortKey,
   filters
 }) {
 
@@ -29,7 +30,30 @@ export default function ProductCardsList({
     }
   }
 
-  const topFiveFilteredWines = filteredWines.slice(0, 5)
+  console.log('filteredWines', filteredWines)
+
+  let mapped = filteredWines.map((wine, i) => {
+    return {
+      index: i,
+      value: wine[sortKey]
+    }
+  })
+
+  mapped.sort((a, b) => {
+    if (b.value > a.value) {
+      return 1
+    }
+    if (a.value > b.value) {
+      return -1
+    }
+    return 0
+  })
+
+  const sortedFilteredWines = mapped.map(function(el){
+    return filteredWines[el.index];
+  });
+
+  const topFiveWines = sortedFilteredWines.slice(0, 5)
   
   return(
     <div
@@ -39,7 +63,7 @@ export default function ProductCardsList({
         flex-flow: row wrap;
       `}
     >
-      {topFiveFilteredWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
+      {topFiveWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
     </div>
   )
 }
@@ -47,5 +71,6 @@ export default function ProductCardsList({
 // Static type checking for props
 ProductCardsList.propTypes = {
   wines: PropTypes.array.isRequired,
+  sortKey: PropTypes.string.isRequired,
   filters: PropTypes.object
 }
