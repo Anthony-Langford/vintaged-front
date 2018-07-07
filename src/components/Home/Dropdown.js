@@ -12,25 +12,28 @@ const DropdownWrapper = styled('div')`
   justify-content: center;
   margin: 0 0 0 6px;
   position: absolute;
-  width: 175px;
-  &:hover {
-    cursor: pointer;
-  }
+  width: 180px;
 `
 
-const TitleWrapper = styled('div')`
+const TitleWrapper = styled('button')`
   display: flex;
   z-index: 2;
   justify-content: space-between;
   align-items: center;
   padding: 4px;
+  outline: none;
   border: 1px solid #D0D0D0;
   border-radius: 5px;
-  background-color: white;
+  background-color: White;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    font-weight: bold;
+  }
 `
 
 const Title = styled('span')`
-  margin: 4px 6px;
+  margin: 0 0 0 6px;
 `
 
 const List = styled('ul')`
@@ -43,11 +46,26 @@ const List = styled('ul')`
   box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.12);
   top: -5px;
   padding: 5px 0 0 0;
-  background-color: white;
+  background-color: White;
 `
 
 const ListItem = styled('li')`
-  padding: 8px;
+  list-style: none;
+`
+
+const Button = styled('button')`
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  text-align: left;
+  outline: none;
+  border: none;
+  background: White;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    font-weight: bold;
+  }
 `
 
 class Dropdown extends React.Component {
@@ -57,6 +75,7 @@ class Dropdown extends React.Component {
     this.state = {
       isOpen: false
     }
+    
     this.toggleList = this.toggleList.bind(this)
   }
 
@@ -84,7 +103,11 @@ class Dropdown extends React.Component {
     return(
       <div>
         <DropdownWrapper label="dropdown-wrapper">
-          <TitleWrapper onClick={this.toggleList}>
+          <TitleWrapper
+            role="button"
+            label="dropdown"
+            onClick={this.toggleList}
+          >
             <Title label="dropdown-title">
               {title}
             </Title>
@@ -96,9 +119,14 @@ class Dropdown extends React.Component {
           {isOpen && (
             <List>
               {list.map((item) => (
-                <ListItem css={`list-style: none;`} key={item.id} onClick={() => toggleItem(item.id, item.key)}>
-                  <span>{item.title}</span>
-                  {item.selected && <span> ✔</span>}
+                <ListItem
+                  key={item.id}
+                  onClick={() => toggleItem(item.id, item.key)}
+                >
+                  <Button role="button">
+                    {item.title}
+                    {item.selected && <span> ✔</span>}
+                  </Button>
                 </ListItem>
               ))}
             </List>
