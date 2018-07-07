@@ -9,7 +9,7 @@ import Wrapper from './Home/Wrapper'
 import NavWrapper from './Home/NavWrapper'
 import Dropdown from './Home/Dropdown'
 import ProductCardsList from './Home/ProductCardsList'
-import SortItem from './Home/SortItem'
+import SortList from './Home/SortList'
 
 // Import actions
 import { uiActions } from '../actions'
@@ -24,7 +24,19 @@ class Home extends React.Component {
 
     this.state = {
       winesFetched: false,
-      sort: 'heat',
+      sortKey: 'heat',
+      sortList: [
+        {
+          id: 0,
+          title: 'Heat',
+          value: 'heat',
+        },
+        {
+          id: 1,
+          title: 'Price',
+          value: 'price_in_cents',
+        }
+      ],
       filters: {
         secondary_category: []
       },
@@ -73,24 +85,24 @@ class Home extends React.Component {
   // Update the state upon changing selected filters
   toggleFilter(id, key) {
     // Find the category
-    let secondary_category = this.state[key]
+    let category = this.state[key]
 
     // Toggle the selected boolean
-    secondary_category[id].selected = !secondary_category[id].selected
+    category[id].selected = !category[id].selected
 
     // Find the corresponding filter array
     let updatedFilters = this.state.filters[key]
 
     // Update the filter array
-    if (updatedFilters.indexOf(secondary_category[id].title) === -1) {
-      updatedFilters.push(secondary_category[id].title)
+    if (updatedFilters.indexOf(category[id].title) === -1) {
+      updatedFilters.push(category[id].title)
     } else {
-      updatedFilters.splice(updatedFilters.indexOf(secondary_category[id].title), 1)
+      updatedFilters.splice(updatedFilters.indexOf(category[id].title), 1)
     }
 
     // Update state
     this.setState({
-      [key]: secondary_category,
+      [key]: category,
       filters: {
         [key]: updatedFilters
       }
@@ -114,7 +126,7 @@ class Home extends React.Component {
 
   setSort(e) {
     this.setState({
-      sort: e.target.value
+      sortKey: e.target.value
     })
   }
 
@@ -129,10 +141,16 @@ class Home extends React.Component {
         </NavWrapper> */}
         <LoaderWrapper winesFetched={this.state.winesFetched}>
           <div label="sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-            <div css={`margin: 8px 0;`}>
+            <div css={`display: flex; margin: 8px 0; align-items: center;`}>
               <span>Sort:</span>
-              <SortItem onClick={this.setSort} title={'Heat'} value={'heat'} selected={this.state.sort === 'heat'} />
-              <SortItem onClick={this.setSort} title={'Price'} value={'price'} selected={this.state.sort === 'price'} />
+              <SortList
+                sortList={this.state.sortList}
+                onClick={this.setSort}
+                selected={this.state.sortKey}
+              >
+                {/* TODO: Make Sort items accessible button items https://codepen.io/svinkle/pen/FHGBh */}
+                {/* TODO: Map these list items */}
+              </SortList>
             </div>
           </div>
 
@@ -140,9 +158,18 @@ class Home extends React.Component {
             <div css={`margin: 8px 0;`}>
               <span>Filter:</span>
             </div>
-            <Dropdown title={this.setTitle('secondary_category')} list={this.state.secondary_category} toggleItem={this.toggleFilter} />
+            {/* TODO: Make Filter items (Dropdowns) accessible list items https://codepen.io/svinkle/pen/aEVwWd */}
+            <Dropdown
+              title={this.setTitle('secondary_category')}
+              list={this.state.secondary_category}
+              toggleItem={this.toggleFilter}
+            />
           </div>
-          <ProductCardsList filters={this.state.filters} wines={this.props.common.wines} />
+          <ProductCardsList
+            sortKey={this.state.sortKey}
+            filters={this.state.filters}
+            wines={this.props.common.wines}
+          />
         </LoaderWrapper>
       </Wrapper>
     )
