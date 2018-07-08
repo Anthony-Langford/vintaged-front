@@ -6,7 +6,7 @@ import store from '../store'
 // Import components
 import Header from './Home/Header'
 import ContentWrapper from './Home/ContentWrapper'
-import NavWrapper from './Home/NavWrapper'
+// import NavWrapper from './Home/NavWrapper'
 import LoaderWrapper from './Home/LoaderWrapper'
 import Dropdown from './Home/Dropdown'
 import ProductCardsList from './Home/ProductCardsList'
