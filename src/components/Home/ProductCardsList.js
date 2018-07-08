@@ -21,6 +21,7 @@ export default function ProductCardsList({
 
   let filteredWines = wines
 
+  // TODO: Allow user to sort in both directions
   // Iterate through filters and filter if any are selected
   for(const key in filters) {
     if (filters[key].length > 0) {
