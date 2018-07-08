@@ -27,14 +27,14 @@ const commonActions = {
           vintages(
             limit: 20
             skip: 0
-            filter: "{'heat': {'$gte': 2.5},'sold': {'$gte': 10},'price_in_cents': {'$gte': 1500},'release_units': {'$gte': 200},'inventory_count': {'$gte': 20}}"
+            filter: "{'heat':{'$gte':2.5},'sold':{'$gte':10},'price_in_cents':{'$gte':1500},'release_units':{'$gte':200},'inventory_count':{'$gte':20}}"
             sort: "{'heat': -1}"
           ) {
             id
             name
             alcohol_content
             heat
-            ${(lat && lon) ? `store_LAPI(lat: ${lat} lon: ${lon}) {
+            ${(lat && lon) ? `store_LAPI(lat:${lat} lon:${lon}){
               store_id
               quantity
             }` : ''}
