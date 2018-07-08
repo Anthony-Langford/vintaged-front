@@ -21,14 +21,15 @@ const TitleWrapper = styled('button')`
   justify-content: space-between;
   align-items: center;
   padding: 4px;
-  outline: none;
   border: 1px solid #D0D0D0;
   border-radius: 5px;
   background-color: White;
-  &:hover,
-  &:focus {
+  &:hover {
     cursor: pointer;
     font-weight: bold;
+  }
+  &:active {
+    outline: none;
   }
 `
 
@@ -51,18 +52,19 @@ const List = styled('ul')`
 
 const ListItem = styled('li')`
   list-style: none;
+  display: flex;
 `
 
 const Button = styled('button')`
   width: 100%;
   height: 100%;
+  margin: 2px;
   padding: 0.5rem;
   text-align: left;
-  outline: none;
   border: none;
   background: White;
-  &:hover,
-  &:focus {
+  font-weight: ${props => props.selected ? 'bold' : 'normal'};
+  &:hover {
     cursor: pointer;
     font-weight: bold;
   }
@@ -123,9 +125,9 @@ class Dropdown extends React.Component {
                   key={item.id}
                   onClick={() => toggleItem(item.id, item.key)}
                 >
-                  <Button role="button">
+                  <Button role="button" selected={item.selected}>
                     {item.title}
-                    {item.selected && <span> ✔</span>}
+                    {item.selected && <span css={`margin: 0 4px;`}>✔</span>}
                   </Button>
                 </ListItem>
               ))}
