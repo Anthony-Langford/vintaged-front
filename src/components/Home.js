@@ -5,15 +5,15 @@ import store from '../store'
 
 // Import components
 import Header from './Home/Header'
-import Wrapper from './Home/Wrapper'
+import ContentWrapper from './Home/ContentWrapper'
 import NavWrapper from './Home/NavWrapper'
+import LoaderWrapper from './Home/LoaderWrapper'
 import Dropdown from './Home/Dropdown'
 import ProductCardsList from './Home/ProductCardsList'
 import SortList from './Home/SortList'
 
 // Import actions
 import { uiActions } from '../actions'
-import LoaderWrapper from './Home/LoaderWrapper'
 
 // Import locale
 import locale from '../locale/Home'
@@ -67,7 +67,7 @@ class Home extends React.Component {
     this.setSort = this.setSort.bind(this);
   }
   
-  // Update state upon receiving new props (from redux)
+  // Update state upon receiving new props
   componentDidUpdate(prevProps) {
     if (this.props.common.wines !== prevProps.common.wines) {
       if (this.props.common.wines.length) {
@@ -100,7 +100,6 @@ class Home extends React.Component {
       updatedFilters.splice(updatedFilters.indexOf(category[id].title), 1)
     }
 
-    // Update state
     this.setState({
       [key]: category,
       filters: {
@@ -132,46 +131,49 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Wrapper>
+      <React.Fragment>
         <Header />
-        {/* <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
+        <ContentWrapper label="Content" >
+          {/* <NavContent toggleNav={this.toggleNav} navState={this.props.ui.navState}>
+            <LoaderWrapper winesFetched={this.state.winesFetched}>
+              <ProductCardsList wines={this.props.common.wines} />
+            </LoaderWrapper>
+          </NavWrapper> */}
           <LoaderWrapper winesFetched={this.state.winesFetched}>
-            <ProductCardsList wines={this.props.common.wines} />
-          </LoaderWrapper>
-        </NavWrapper> */}
-        <LoaderWrapper winesFetched={this.state.winesFetched}>
-          <div label="sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-            <div css={`display: flex; margin: 8px 0; align-items: center;`}>
-              <span>Sort:</span>
-              <SortList
-                sortList={this.state.sortList}
-                onClick={this.setSort}
-                selected={this.state.sortKey}
-              >
-                {/* TODO: Make Sort items accessible button items https://codepen.io/svinkle/pen/FHGBh */}
-                {/* TODO: Map these list items */}
-              </SortList>
+            <div label="sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
+              <div css={`display: flex; margin: 8px 0; align-items: center;`}>
+                <span>Sort:</span>
+                <SortList
+                  sortList={this.state.sortList}
+                  onClick={this.setSort}
+                  selected={this.state.sortKey}
+                >
+                  {/* TODO: Make Sort items accessible button items https://codepen.io/svinkle/pen/FHGBh */}
+                  {/* TODO: Map these list items */}
+                </SortList>
+              </div>
             </div>
-          </div>
 
-          <div label="filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-            <div css={`margin: 8px 0;`}>
-              <span>Filter:</span>
+            <div label="filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
+              <div css={`margin: 8px 0;`}>
+                <span>Filter:</span>
+              </div>
+              {/* TODO: Make Filter items (Dropdowns) accessible list items https://codepen.io/svinkle/pen/aEVwWd */}
+              <Dropdown
+                title={this.setTitle('secondary_category')}
+                list={this.state.secondary_category}
+                toggleItem={this.toggleFilter}
+              />
             </div>
-            {/* TODO: Make Filter items (Dropdowns) accessible list items https://codepen.io/svinkle/pen/aEVwWd */}
-            <Dropdown
-              title={this.setTitle('secondary_category')}
-              list={this.state.secondary_category}
-              toggleItem={this.toggleFilter}
+            <ProductCardsList
+              sortKey={this.state.sortKey}
+              filters={this.state.filters}
+              wines={this.props.common.wines}
             />
-          </div>
-          <ProductCardsList
-            sortKey={this.state.sortKey}
-            filters={this.state.filters}
-            wines={this.props.common.wines}
-          />
-        </LoaderWrapper>
-      </Wrapper>
+          </LoaderWrapper>
+        </ContentWrapper>
+        <div label="Footer" />
+      </React.Fragment>
     )
   }
 }
