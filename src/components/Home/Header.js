@@ -1,4 +1,3 @@
-//emotion
 import React from 'react'
 
 // Import components
@@ -9,6 +8,11 @@ export default () => (
     label="Header"
     css={`
       background: #1D2029;
+      position: fixed;
+      z-index: 3;
+      width: 100%;
+      top: 0;
+      left: 0;
     `}
   >
     <div
