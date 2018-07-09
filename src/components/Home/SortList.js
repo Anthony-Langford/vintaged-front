@@ -16,16 +16,17 @@ export default function SortList({
   selected,
   onClick
 }) {
-
   return(
     <List>
       {sortList.map(sortItem =>
         <SortItem
           key={sortItem.id}
+          id={sortItem.id}
           onClick={onClick}
           title={sortItem.title}
           value={sortItem.value}
           selected={selected}
+          sortDirection={sortItem.sortDirection}
         />
       )}
     </List>
