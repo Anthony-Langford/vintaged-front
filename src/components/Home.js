@@ -142,7 +142,7 @@ class Home extends React.Component {
           <LoaderWrapper winesFetched={this.state.winesFetched}>
             <div label="sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
               <div css={`display: flex; margin: 8px 0; align-items: center;`}>
-                <span>Sort:</span>
+                <span>Sort by:</span>
                 <SortList
                   sortList={this.state.sortList}
                   onClick={this.setSort}
@@ -156,7 +156,7 @@ class Home extends React.Component {
 
             <div label="filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
               <div css={`margin: 8px 0;`}>
-                <span>Filter:</span>
+                <span>Filter by:</span>
               </div>
               {/* TODO: Make Filter items (Dropdowns) accessible list items https://codepen.io/svinkle/pen/aEVwWd */}
               <Dropdown
