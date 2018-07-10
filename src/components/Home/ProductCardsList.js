@@ -10,11 +10,10 @@ export default function ProductCardsList({
   sortDirection,
   filters
 }) {
-  let filteredWines = wines
   // Filter by store-specific inventory data if possible
-  // const filteredWines = wines[0].store_LAPI ?
-  //   wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5) :
-  //   wines.slice(0, 5)
+  let filteredWines = wines[0].store_LAPI ?
+    wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5) :
+    wines.slice(0, 5)
 
   // Iterate through filters and filter if any are selected
   for(const key in filters) {
