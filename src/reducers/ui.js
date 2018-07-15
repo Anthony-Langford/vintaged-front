@@ -1,6 +1,7 @@
 export default function ui(
   state = {
     navState: false,
+    expandedCards: []
   },
   action) {
   switch (action.type) {
@@ -10,7 +11,13 @@ export default function ui(
       navState: action.toggleNav
     };
   }
-  default : {
+  case 'UPDATE_EXPANDED_CARDS': {
+    return {
+      ...state,
+      expandedCards: action.expandedCards,
+    }
+  }
+  default: {
     return state;
   }
   }

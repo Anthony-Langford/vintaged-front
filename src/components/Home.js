@@ -83,6 +83,7 @@ class Home extends React.Component {
     }
   }
 
+  // Toggle nav bar
   toggleNav() {
     store.dispatch(uiActions.toggleNav(!this.props.ui.navState))
   }
@@ -129,7 +130,6 @@ class Home extends React.Component {
   }
 
   setSort(sortBy, id) {
-
     let sortList = this.state.sortList
 
     if (this.state.sortKey.sortBy === sortBy) {
@@ -185,6 +185,7 @@ class Home extends React.Component {
               sortDirection={this.state.sortKey.sortDirection}
               filters={this.state.filters}
               wines={this.props.common.wines}
+              expandedCards={this.props.ui.expandedCards}
             />
           </LoaderWrapper>
         </ContentWrapper>

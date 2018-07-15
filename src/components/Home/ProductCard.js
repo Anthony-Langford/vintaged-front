@@ -4,7 +4,20 @@ import styled from 'react-emotion'
 
 import Card from './Card'
 
-export default function ProductCard({ wine }) {
+export default function ProductCard({
+  wine,
+  expandedCards
+}) {
+  const thisCard = () => (
+    card.key === wine.id
+  )
+
+  console.log('expandedCards', expandedCards)
+
+  // const expanded = expandedCards.find(thisCard).expanded
+
+  // console.log('expanded', expanded)
+
   return(
     <Card>
       <div css={`display: flex; justify-content: space-between; margin: 0; font-weight: bold;`}>
@@ -36,5 +49,6 @@ export default function ProductCard({ wine }) {
 
 // Static type checking for props
 ProductCard.propTypes = {
-  wine: PropTypes.object.isRequired
+  wine: PropTypes.object.isRequired,
+  expandedCards: PropTypes.array,
 }
