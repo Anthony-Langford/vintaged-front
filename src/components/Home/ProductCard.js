@@ -9,7 +9,7 @@ export default function ProductCard({ wine }) {
     <Card>
       <div css={`display: flex; justify-content: space-between; margin: 0; font-weight: bold;`}>
         <div>{wine.name}</div>
-        <div>{wine.heat > 5 ? '🔥' : ''}</div>
+        <div>{wine.heat > 3 ? '🔥' : ''}</div>
       </div>
 
       <div css={`display: flex; flex-direction: row; width: 100%;`}>
