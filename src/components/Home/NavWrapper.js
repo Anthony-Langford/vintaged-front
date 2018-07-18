@@ -4,20 +4,19 @@ import PropTypes from 'prop-types'
 
 // Import components
 import Nav from './Nav'
-import NavButton from './NavButton'
 import NavOverlay from './NavOverlay'
 
 const FlexWrapper = styled('div')`
   flex: 1;
 `
 
-const InnerNavWrapper = styled('div')`
+const OuterWrapper = styled('div')`
   position: absolute;
   top: 68px;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-y: scroll;
+  overflow: hidden;
 `
 
 const ContentWrapper = styled('div')`
@@ -27,6 +26,7 @@ const ContentWrapper = styled('div')`
   right: 0;
   bottom: 0;
   overflow-y: scroll;
+  transition: none;
 `
 
 export default function NavWrapper({
@@ -36,19 +36,15 @@ export default function NavWrapper({
 }) {
   return(
     <FlexWrapper>
-      <div label="OuterNavWrapper">
-        <InnerNavWrapper>
-          <ContentWrapper>
-            {children}
-          </ContentWrapper>
+      <OuterWrapper>
+        <ContentWrapper>
+          {children}
+        </ContentWrapper>
 
-          <Nav toggleNav={toggleNav} navState={navState} />
-        </InnerNavWrapper>
-        
-        <NavOverlay toggleNav={toggleNav} navState={navState} />
-
-        <NavButton onClick={toggleNav} />
-      </div>
+        <Nav toggleNav={toggleNav} navState={navState} />
+      </OuterWrapper>
+      
+      <NavOverlay toggleNav={toggleNav} navState={navState} />
     </FlexWrapper>
   )
 }
