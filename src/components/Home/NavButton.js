@@ -7,19 +7,13 @@ export default function NavButton({ onClick }) {
       label="NavButton"
       onClick={onClick}
       css={`
-        position: fixed;
-        bottom: 0px;
-        right: 0px;
-        background-color: #AD1457;
-        border-radius: 50%;
-        padding: 16px;
-        margin: 32px;
-        animation: animation-1m49nxd 0.25s ease-in;
-        transition: background-color 150ms ease-in-out;
-        border-width: 0px;
-        border-style: initial;
-        border-color: initial;
-        border-image: initial;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        width: 36px;
+        height: 36px;
       `}
     >
       <svg
