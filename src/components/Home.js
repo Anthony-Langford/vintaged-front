@@ -6,11 +6,12 @@ import store from '../store'
 // Import components
 import Header from './Home/Header'
 import ContentWrapper from './Home/ContentWrapper'
-// import NavWrapper from './Home/NavWrapper'
+import NavWrapper from './Home/NavWrapper'
 import LoaderWrapper from './Home/LoaderWrapper'
 import Dropdown from './Home/Dropdown'
 import ProductCardsList from './Home/ProductCardsList'
 import SortList from './Home/SortList'
+import Footer from './Home/Footer'
 
 // Import actions
 import { uiActions } from '../actions'
@@ -148,47 +149,45 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header label="Header" />
         <ContentWrapper label="Content" >
-          {/* <NavContent toggleNav={this.toggleNav} navState={this.props.ui.navState}>
-            <LoaderWrapper winesFetched={this.state.winesFetched}>
-              <ProductCardsList wines={this.props.common.wines} />
-            </LoaderWrapper>
-          </NavWrapper> */}
+          <Header label="Header" toggleNav={this.toggleNav} />
 
-          <LoaderWrapper winesFetched={this.state.winesFetched}>
-            <div label="Sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-              <div css={`display: flex; margin: 8px 0; align-items: center;`}>
-                <span>Sort by:</span>
-                <SortList
-                  sortList={this.state.sortList}
-                  onClick={this.setSort}
-                  selected={this.state.sortKey.sortBy}
+          <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
+            <LoaderWrapper winesFetched={this.state.winesFetched}>
+              <div label="Sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
+                <div css={`display: flex; margin: 8px 0; align-items: center;`}>
+                  <span>Sort by:</span>
+                  <SortList
+                    sortList={this.state.sortList}
+                    onClick={this.setSort}
+                    selected={this.state.sortKey.sortBy}
+                  />
+                </div>
+              </div>
+
+              <div label="Filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
+                <div css={`margin: 8px 0;`}>
+                  <span>Filter by:</span>
+                </div>
+
+                <Dropdown
+                  title={this.setTitle('secondary_category')}
+                  list={this.state.secondary_category}
+                  toggleItem={this.toggleFilter}
                 />
               </div>
-            </div>
 
-            <div label="Filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-              <div css={`margin: 8px 0;`}>
-                <span>Filter by:</span>
-              </div>
-
-              <Dropdown
-                title={this.setTitle('secondary_category')}
-                list={this.state.secondary_category}
-                toggleItem={this.toggleFilter}
+              <ProductCardsList
+                sortBy={this.state.sortKey.sortBy}
+                sortDirection={this.state.sortKey.sortDirection}
+                filters={this.state.filters}
+                wines={this.props.common.wines}
               />
-            </div>
+            </LoaderWrapper>
+          </NavWrapper>
 
-            <ProductCardsList
-              sortBy={this.state.sortKey.sortBy}
-              sortDirection={this.state.sortKey.sortDirection}
-              filters={this.state.filters}
-              wines={this.props.common.wines}
-            />
-          </LoaderWrapper>
+          <Footer />
         </ContentWrapper>
-        <div label="Footer" />
       </React.Fragment>
     )
   }
