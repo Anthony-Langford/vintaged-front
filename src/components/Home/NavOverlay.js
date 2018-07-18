@@ -10,7 +10,7 @@ export default function NavOverlay({
       label="NavOverlay"
       onClick={toggleNav}
       css={`
-        z-index: 1;
+        z-index: 1000;
         position: fixed;
         top: 0px;
         left: 0px;
