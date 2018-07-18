@@ -28,7 +28,7 @@ const commonActions = {
             limit: 40
             skip: 0
             filter: "{'heat':{'$gte':2.5},'sold':{'$gte':10},'price_in_cents':{'$gte':1500},'release_units':{'$gte':200},'inventory_count':{'$gte':20}}"
-            sort: "{'heat': -1}"
+            sort: "{'heat':-1}"
           ) {
             id
             name
