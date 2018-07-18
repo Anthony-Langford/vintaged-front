@@ -4,6 +4,7 @@ import { Router } from "@reach/router"
 
 // Import containers
 import HomeContainer from './Home'
+import TestContainer from './Test'
 
 // Import helpers
 import store from '../store'
@@ -15,12 +16,13 @@ store.subscribe(() => {})
 
 store.dispatch(commonActions.fetchWines())
 
-getCurrentLocation()
+// getCurrentLocation()
 
 const App = () =>
   <Provider store={store}>
     <Router id="router">
       <HomeContainer path="/" />
+      <TestContainer path="/test" />
     </Router>
   </Provider>
 
