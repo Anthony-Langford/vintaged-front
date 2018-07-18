@@ -8,15 +8,17 @@ export default () => (
       display: flex;
     `}
   >
-    <div css={`
-      position: relative;
-      overflow: hidden;
-      display: inline-block;
-      margin: 0;
-      padding: 0;
-      width: 36px;
-      height: 36px;
-    `}>
+    <div
+      css={`
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        width: 36px;
+        height: 36px;
+      `}
+    >
       <img
         alt="vintaged"
         width="36"
