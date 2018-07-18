@@ -13,7 +13,7 @@ export default function Nav({
       label="NavBar"
       onClick={toggleNav}
       css={`
-        z-index: 2;
+        z-index: 1001;
         position: absolute;
         top: 0px;
         bottom: 0px;
