@@ -19,7 +19,7 @@ import { uiActions } from '../actions'
 // Import locale
 import locale from '../locale/Home'
 
-class Test extends React.Component {
+class Products extends React.Component {
   constructor(props) {
     super(props)
     // TODO: Move sorting and filtering to redux store
@@ -149,8 +149,9 @@ class Test extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header label="Header" />
         <ContentWrapper label="Content" >
+          <Header label="Header" toggleNav={this.toggleNav} />
+
           <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
             <LoaderWrapper winesFetched={this.state.winesFetched}>
               <div label="Sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
@@ -184,8 +185,9 @@ class Test extends React.Component {
               />
             </LoaderWrapper>
           </NavWrapper>
+
+          <Footer />
         </ContentWrapper>
-        <Footer />
       </React.Fragment>
     )
   }
@@ -198,15 +200,15 @@ function mapStateToProps(state) {
 }
 
 // Static type checking for props
-Test.propTypes = {
+Products.propTypes = {
   dispatch: PropTypes.func.isRequired,
   common: PropTypes.object,
   ui: PropTypes.object.isRequired
 }
 
 // Set default value for prop if not required and not present
-Test.defaultProps = {
+Products.defaultProps = {
   common: {}
 }
 
-export default connect(mapStateToProps)(Test)
+export default connect(mapStateToProps)(Products)
