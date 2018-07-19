@@ -3,8 +3,8 @@ import { Provider } from 'react-redux'
 import { Router } from "@reach/router"
 
 // Import containers
-import HomeContainer from './Home'
-import TestContainer from './Test'
+import Home from './Home'
+import Products from './Products'
 
 // Import helpers
 import store from '../store'
@@ -16,13 +16,13 @@ store.subscribe(() => {})
 
 store.dispatch(commonActions.fetchWines())
 
-getCurrentLocation()
+// getCurrentLocation()
 
 const App = () =>
   <Provider store={store}>
     <Router id="router">
-      <HomeContainer path="/" />
-      <TestContainer path="/test" />
+      <Home path="/" />
+      <Products path="/products" />
     </Router>
   </Provider>
 
