@@ -28,7 +28,7 @@ const active = css`
 export default function NavLinks() {
   const links = [
     { name: 'Home', link: "/" },
-    // { name: 'Test', link: "/test" },
+    { name: 'Products', link: "/products" },
   ]
 
   return links.map(obj => (
