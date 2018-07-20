@@ -49,8 +49,9 @@ export default function Header ({
           css={`
             margin: 0 0 0 8px;
             width: 100%;
-            font-family: Cursive;
+            font-family: Lobster;
             font-size: 32px;
+            font-weight: 300;
             color: #f5f5f5;
           `}
         >
