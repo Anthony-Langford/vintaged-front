@@ -149,7 +149,7 @@ class Products extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <ContentWrapper label="Content" >
+        <ContentWrapper label="Content">
           <Header label="Header" toggleNav={this.toggleNav} />
 
           <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
