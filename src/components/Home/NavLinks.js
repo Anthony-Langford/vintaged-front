@@ -38,6 +38,7 @@ export default function NavLinks() {
           <Link
             to={obj.link}
             aria-current="true"
+            tabIndex="-1"
             className={css`
               ${base};
               ${active};
@@ -49,6 +50,7 @@ export default function NavLinks() {
           <Link
             to={obj.link}
             aria-current="false"
+            tabIndex="-1"
             css={`
               ${base};
             `}
