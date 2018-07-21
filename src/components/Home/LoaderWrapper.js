@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 // https://codepen.io/wolfvanveen/pen/zopKqN
 
 export default function LoaderWrapper({
-  winesFetched,
+  loading,
   children
 }) {
   return(
-    winesFetched ? children : <div>Loading...</div>
+    loading ? <div>Loading...</div> : children
   )
 }
 
 LoaderWrapper.propTypes = {
-  winesFetched: PropTypes.bool,
+  loading: PropTypes.bool,
   children: PropTypes.node
 }
