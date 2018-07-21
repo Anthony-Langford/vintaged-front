@@ -14,6 +14,8 @@ export default function NavButton({ onClick }) {
         padding: 0;
         width: 36px;
         height: 36px;
+        background-color: #1D2029;
+        border: none;
       `}
     >
       <svg
