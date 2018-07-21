@@ -24,7 +24,6 @@ class Products extends React.Component {
     super(props)
     // TODO: Move sorting and filtering to redux store
     this.state = {
-      winesFetched: false,
       sortKey: {
         sortBy: 'heat',
         sortDirection: 'descending',
@@ -71,17 +70,6 @@ class Products extends React.Component {
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleFilter = this.toggleFilter.bind(this);
     this.setSort = this.setSort.bind(this);
-  }
-  
-  // Update state upon receiving new props
-  componentDidUpdate(prevProps) {
-    if (this.props.common.wines !== prevProps.common.wines) {
-      if (this.props.common.wines.length) {
-        this.setState({
-          winesFetched: true
-        })
-      }
-    }
   }
 
   toggleNav() {
@@ -153,7 +141,7 @@ class Products extends React.Component {
           <Header label="Header" toggleNav={this.toggleNav} />
 
           <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
-            <LoaderWrapper winesFetched={this.state.winesFetched}>
+            <LoaderWrapper loading={this.props.common.isFetching}>
               <div label="Sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
                 <div css={`display: flex; margin: 8px 0; align-items: center;`}>
                   <span>Sort by:</span>
