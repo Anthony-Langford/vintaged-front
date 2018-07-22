@@ -7,29 +7,31 @@ import Card from './Card'
 export default function ProductCard({ wine }) {
   return(
     <Card>
-      <div css={`display: flex; justify-content: space-between; margin: 0; font-weight: bold;`}>
-        <div>{wine.name}</div>
-        <div>{wine.heat > 5 ? '🔥' : ''}</div>
-      </div>
+
 
       <div css={`display: flex; flex-direction: row; width: 100%;`}>
-        <div css={`width: 150px;`}>
-          <img src={wine.image_thumb_url} css={`width: 100%; height: 100%; object-fit: cover;`} />
+        <div css={`
+             width:600px;
+             overflow:hidden;
+             margin:0;`}>
+          <img src={wine.image_url} css={`
+              display:inline-block;
+              width:250%;
+              margin-top:-20%;
+              margin-left:-78%;
+              margin-bottom:-20%;`}/>
         </div>
-
-        <ul css={`margin: 10px 0 0 0; padding: 0; list-style: none;`}>
-          <li>{`Price: $${wine.price_in_cents/100}`}</li>
-          <li>{`Origin: ${wine.origin}`}</li>
-          <li>{`Category: ${wine.secondary_category}`}</li>
-          <li>{`Type: ${wine.varietal}`}</li>
-          <li>{`Released On: ${wine.released_on}`}</li>
-          <li>{`Heat: ${wine.heat}`}</li>
+        <ul css={`margin: 0px 0 0 0; padding: 0; list-style: none;`}>
+          <li css={`font-weight: bold; margin-top: 10px;`}> {wine.name}</li>
+          <li css={`font-style: oblique; margin-top: 2px;`}>{`${wine.origin}`}</li>
+          <li css={`margin-top: 2px; font-size: larger`}>{`$${wine.price_in_cents/100}`}</li>
+          <li css={`margin-top: 2px;`}>{`#${wine.id}`}</li>
+          <br></br>
+          <li css={`margin-top: 2px;`}>{`${wine.sold} bottles or ${wine.sold_percent}% of the initial inventory of ${wine.release_units} have been sold since the release date ${wine.released_on} representing ${wine.heat}% sold per day.`}</li>
         </ul>
       </div>
 
-      <div>
-        <p>Description: {wine.tasting_note}</p>
-      </div>
+
     </Card>
   )
 }
