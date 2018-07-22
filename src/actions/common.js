@@ -50,6 +50,10 @@ const commonActions = {
             varietal
             style
             producer_name
+            sold
+            sold_percent
+            release_units
+            days_since_release
           }
         }
       `
@@ -97,7 +101,7 @@ const commonActions = {
     }
   ),
 
-  receiveWine: wine => {    
+  receiveWine: wine => {
     return({
       type: 'RECEIVE_WINE',
       wine,
@@ -133,7 +137,7 @@ const commonActions = {
     }
   ),
 
-  receiveStores: stores => {    
+  receiveStores: stores => {
     return({
       type: 'RECEIVE_STORES',
       stores,
