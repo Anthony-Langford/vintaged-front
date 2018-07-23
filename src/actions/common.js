@@ -54,6 +54,8 @@ const commonActions = {
             sold_percent
             release_units
             days_since_release
+            sugar_in_grams_per_liter
+            sugar_content
           }
         }
       `

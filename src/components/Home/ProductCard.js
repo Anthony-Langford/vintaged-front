@@ -7,9 +7,9 @@ import Card from './Card'
 export default function ProductCard({ wine }) {
   return(
     <Card>
-      <div css={`display: flex; flex-direction: row; width: 100%;`}>
+      <div css={`display: flex; width: 100%;`}>
         <div css={`
-             width:600px;
+             width:40%;
              overflow:hidden;
              margin:0;`}>
           <img src={wine.image_url} css={`
@@ -19,14 +19,46 @@ export default function ProductCard({ wine }) {
               margin-left:-78%;
               margin-bottom:-20%;`}/>
         </div>
-        <ul css={`margin: 0px 0 0 0; padding: 0; list-style: none;`}>
-          <li css={`font-weight: bold; margin-top: 10px;`}> {wine.name}</li>
-          <li css={`font-style: oblique; margin-top: 2px;`}>{`${wine.origin}`}</li>
-          <li css={`margin-top: 2px; font-size: larger`}>{`$${wine.price_in_cents/100}`}</li>
-          <li css={`margin-top: 2px;`}>{`#${wine.id}`}</li>
-          <br></br>
-          <li css={`margin-top: 2px;`}>{`${wine.sold} bottles or ${wine.sold_percent}% of the initial inventory of ${wine.release_units} have been sold since the release date ${wine.released_on} representing ${wine.heat}% sold per day.`}</li>
-        </ul>
+        <div css={`width: 60%`}>
+          <ul css={`margin: 10px 0 0 0; padding: 0; list-style: none;`}>
+            <li css={`font-weight: bold; margin-top: 2px; font-size: larger;`}> {wine.name}</li>
+            <li css={`font-style: oblique; margin-top: 7px;`}>{`${wine.origin}`}</li>
+            <li css={`margin-top: 2px;`}>{`#${wine.id}`}</li>
+            <li css={`margin-top: 2px; font-size: larger; margin-bottom: 7px; margin-bottom: 7px;`}>{`$${wine.price_in_cents/100}`}</li>
+          </ul>
+          <table css={`width: 100%;
+              border: 1px solid #ddd;
+              padding: 3px;`}>
+            <tr css={`background-color: #f2f2f2;`}>
+              <td>ABV</td>
+              <td>{`${wine.alcohol_content/100}%`}</td>
+            </tr>
+            <tr>
+              <td>Sugar GPL</td>
+              <td>{wine.sugar_in_grams_per_liter}</td>
+            </tr>
+            <tr css={`background-color: #f2f2f2;`}>
+              <td>Release date</td>
+              <td>{wine.released_on}</td>
+            </tr>
+            <tr>
+              <td>Initial inventory</td>
+              <td>~{wine.release_units} bottles</td>
+            </tr>
+            <tr css={`background-color: #f2f2f2;`}>
+              <td>Sold</td>
+              <td>{wine.sold} bottles</td>
+            </tr>
+            <tr>
+              <td>Percent Sold</td>
+              <td>{wine.sold_percent}%</td>
+            </tr>
+            <tr css={`font-weight: bold; margin-top: 45px; background-color: #f2f2f2;`}>
+              <td>Heat</td>
+              <td>{wine.heat}</td>
+            </tr>
+          </table>
+        </div>
       </div>
 
 
