@@ -73,7 +73,7 @@ class Products extends React.Component {
   }
 
   toggleNav() {
-    store.dispatch(uiActions.toggleNav(!this.props.ui.navState))
+    store.dispatch(uiActions.toggleNav(!this.props.ui.navOpen))
   }
 
   // Update the state upon changing selected filters
@@ -140,7 +140,7 @@ class Products extends React.Component {
         <ContentWrapper label="Content">
           <Header label="Header" toggleNav={this.toggleNav} />
 
-          <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
+          <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
             <LoaderWrapper loading={this.props.common.isFetching}>
               <div label="Sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
                 <div css={`display: flex; margin: 8px 0; align-items: center;`}>
