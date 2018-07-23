@@ -1,13 +1,13 @@
 export default function ui(
   state = {
-    navState: false,
+    navOpen: false,
   },
   action) {
   switch (action.type) {
   case 'TOGGLE_NAV' : {
     return {
       ...state,
-      navState: action.toggleNav
+      navOpen: action.toggleNav
     };
   }
   default : {
