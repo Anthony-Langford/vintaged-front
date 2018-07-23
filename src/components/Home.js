@@ -23,7 +23,7 @@ class Home extends React.Component {
   }
 
   toggleNav() {
-    store.dispatch(uiActions.toggleNav(!this.props.ui.navState))
+    store.dispatch(uiActions.toggleNav(!this.props.ui.navOpen))
   }
 
   render() {
@@ -32,7 +32,7 @@ class Home extends React.Component {
         <ContentWrapper label="Content">
           <Header label="Header" toggleNav={this.toggleNav} />
 
-          <NavWrapper toggleNav={this.toggleNav} navState={this.props.ui.navState}>
+          <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
             <LoaderWrapper loading={this.props.common.isFetching}>
               <div
                 css={`
