@@ -25,7 +25,9 @@ const active = css`
   }
 `
 
-export default function NavLinks() {
+export default function NavLinks({
+  navOpen
+}) {
   const links = [
     { name: 'Home', link: "/" },
     { name: 'Products', link: "/products" },
@@ -38,7 +40,7 @@ export default function NavLinks() {
           <Link
             to={obj.link}
             aria-current="true"
-            tabIndex="-1"
+            tabIndex={navOpen ? '0' : '-1'}
             className={css`
               ${base};
               ${active};
@@ -50,7 +52,7 @@ export default function NavLinks() {
           <Link
             to={obj.link}
             aria-current="false"
-            tabIndex="-1"
+            tabIndex={navOpen ? '0' : '-1'}
             css={`
               ${base};
             `}
@@ -65,5 +67,6 @@ export default function NavLinks() {
 
 // Static type checking for props
 NavLinks.propTypes = {
+  navOpen: PropTypes.bool,
   match: PropTypes.object
 }
