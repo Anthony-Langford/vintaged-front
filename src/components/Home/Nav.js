@@ -29,7 +29,7 @@ export default function Nav({
     >
       <h3>Navigation</h3>
       <nav>
-        <NavLinks />
+        <NavLinks navOpen={navOpen} />
       </nav>
     </div>
   )
