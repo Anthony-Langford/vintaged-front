@@ -6,7 +6,7 @@ import NavLinks from './NavLinks'
 
 export default function Nav({
   toggleNav,
-  navState
+  navOpen
 }) {
   return(
     <div
@@ -17,14 +17,14 @@ export default function Nav({
         position: absolute;
         top: 0px;
         bottom: 0px;
+        left: -250px;
+        padding: 32px;
+        width: 250px;
         transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
         will-change: transform;
         overflow-y: auto;
-        right: 0px;
-        transform: translateX(${navState ? 0 : 100}%);
+        transform: translateX(${navOpen ? 100 : 0}%);
         background-color: #f5f5f5;
-        padding: 32px;
-        width: 250px;
       `}
     >
       <h3>Navigation</h3>
@@ -38,5 +38,5 @@ export default function Nav({
 // Static type checking for props
 Nav.propTypes = {
   toggleNav: PropTypes.func.isRequired,
-  navState: PropTypes.bool.isRequired
+  navOpen: PropTypes.bool.isRequired
 }
