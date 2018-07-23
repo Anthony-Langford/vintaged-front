@@ -16,7 +16,7 @@ store.subscribe(() => {})
 
 store.dispatch(commonActions.fetchWines())
 
-// getCurrentLocation()
+getCurrentLocation()
 
 const App = () =>
   <Provider store={store}>
