@@ -5,6 +5,7 @@ import store from '../store'
 
 // Import components
 import Header from './Home/Header'
+import HomeContent from './Home/HomeContent'
 import ContentWrapper from './Home/ContentWrapper'
 import NavWrapper from './Home/NavWrapper'
 import LoaderWrapper from './Home/LoaderWrapper'
@@ -34,15 +35,7 @@ class Home extends React.Component {
 
           <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
             <LoaderWrapper loading={this.props.common.isFetching}>
-              <div
-                css={`
-                  display: flex;
-                  flex-direction: column;
-                  margin: 0 1rem;
-                `}
-              >
-                <h1 css={`font-weight: 300;`}>Explore Vintaged and Find Your Wine</h1>
-              </div>
+              <HomeContent />
             </LoaderWrapper>
           </NavWrapper>
 
