@@ -13,11 +13,12 @@ const DropdownWrapper = styled('div')`
   margin: 0 0 0 6px;
   position: absolute;
   width: 180px;
+  z-index: 3;
 `
 
 const TitleWrapper = styled('button')`
   display: flex;
-  z-index: 2;
+  z-index: 4;
   justify-content: space-between;
   align-items: center;
   padding: 4px;
@@ -63,10 +64,8 @@ const Button = styled('button')`
   text-align: left;
   border: none;
   background: White;
-  font-weight: ${props => props.selected ? 'bold' : 'normal'};
   &:hover {
     cursor: pointer;
-    font-weight: bold;
   }
 `
 
@@ -110,11 +109,11 @@ class Dropdown extends React.Component {
             label="dropdown"
             onClick={this.toggleList}
           >
-            <Title label="dropdown-title">
+            <Title label="dropdown-title" isOpen={isOpen}>
               {title}
             </Title>
             {isOpen
-              ? <Icon icon="arrow_down" height="24px" width="24px" name="arrow-down" margin='auto 6px' />
+              ? <Icon icon="arrow_up" height="24px" width="24px" name="arrow-down" margin='auto 6px' rotate={true} />
               : <Icon icon="arrow_up" height="24px" width="24px" name="arrow-up" margin='auto 6px' />
             }
           </TitleWrapper>
