@@ -1,8 +1,6 @@
 import React from 'react'
 
-export default function HomeContent({
-  
-}) {
+export default function HomeContent({}) {
   return(
     <div
       css={`
@@ -11,7 +9,9 @@ export default function HomeContent({
         margin: 0 1rem;
       `}
     >
-      <h1 css={`font-weight: 300;`}>Explore Vintaged and Find Your Wine</h1>
+      <h1 css={`font-weight: 300; text-align: center;`}>
+        Explore Vintaged and Find Your Wine
+      </h1>
     </div>
   )
 }
