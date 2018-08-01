@@ -4,7 +4,8 @@ import ui from './ui'
 
 const rootReducer = combineReducers({
   common,
-  ui
+  ui,
+  sort
 })
 
 export default rootReducer
