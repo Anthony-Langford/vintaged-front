@@ -15,14 +15,14 @@ export default function SortItem({
   id,
   title,
   value,
-  selected,
+  sortBy,
   onClick,
   sortDirection
 }) {
 
   const Button = styled('button')`
     padding: 0.25rem;
-    font-weight: ${selected === value ? 'bold' : 'normal'};
+    font-weight: ${sortBy === value ? 'bold' : 'normal'};
     border: none;
     background-color: White;  
     border-radius: 5px;
@@ -43,7 +43,7 @@ export default function SortItem({
         sortDirection={sortDirection}
       >
         <span css={'display: flex;'}>
-          {title}{selected === value && sortDirection === 'ascending' ?
+          {title}{sortBy === value && sortDirection === 'ascending' ?
             (<Icon icon="arrow-up" height="12px" width="12px" name="arrow-down" margin='auto 6px' />) :
             <Icon icon="arrow-up" height="12px" width="12px" name="arrow-up" margin='auto 6px' rotate={true} />}
         </span>
@@ -56,7 +56,7 @@ export default function SortItem({
 SortItem.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  selected: PropTypes.string.isRequired,
+  sortBy: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   sortDirection: PropTypes.string.isRequired,
