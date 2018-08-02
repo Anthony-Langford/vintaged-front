@@ -119,14 +119,19 @@ class Dropdown extends React.Component {
           </TitleWrapper>
           {isOpen && (
             <List>
-              {list.map((item) => (
+              {list.map(item => (
                 <ListItem
                   key={item.id}
                   onClick={() => toggleItem(item.id, item.key)}
                 >
-                  <Button role="button" selected={item.selected}>
+                  <Button
+                    role="button"
+                    selected={item.selected}
+                  >
                     {item.title}
-                    {item.selected && <span css={`margin: 0 4px;`}>✔</span>}
+                    {item.selected && (
+                      <span css={`margin: 0 4px;`}>✔</span>
+                    )}
                   </Button>
                 </ListItem>
               ))}
