@@ -14,7 +14,10 @@ import SortList from './Home/SortList'
 import Footer from './Home/Footer'
 
 // Import actions
-import { uiActions } from '../actions'
+import {
+  uiActions,
+  sortActions
+} from '../actions'
 
 // Import locale
 import locale from '../locale/Home'
@@ -22,26 +25,7 @@ import locale from '../locale/Home'
 class Products extends React.Component {
   constructor(props) {
     super(props)
-    // TODO: Move sorting and filtering to redux store
     this.state = {
-      sortKey: {
-        sortBy: 'heat',
-        sortDirection: 'descending',
-      },
-      sortList: [
-        {
-          id: 0,
-          title: 'Heat',
-          value: 'heat',
-          sortDirection: 'descending'
-        },
-        {
-          id: 1,
-          title: 'Price',
-          value: 'price_in_cents',
-          sortDirection: 'ascending'
-        }
-      ],
       filters: {
         secondary_category: []
       },
@@ -118,20 +102,17 @@ class Products extends React.Component {
   }
 
   setSort(sortBy, id) {
+    console.log('id', id)
 
-    let sortList = this.state.sortList
+    let sortDirection = this.props.sort.sortDirection
 
-    if (this.state.sortKey.sortBy === sortBy) {
-      sortList[id].sortDirection = sortList[id].sortDirection === 'ascending' ? 'descending' : 'ascending'
+    if (this.props.sort.sortBy === sortBy) {
+      sortDirection = sortDirection === 'ascending' ? 'descending' : 'ascending'
     }
 
-    this.setState({
-      sortKey: {
-        sortBy,
-        sortDirection: sortList[id].sortDirection
-      },
-      sortList
-    })
+    console.log('sortDirection', sortDirection)
+
+    store.dispatch(sortActions.setSort(sortBy, sortDirection))
   }
 
   render() {
@@ -146,9 +127,10 @@ class Products extends React.Component {
                 <div css={`display: flex; margin: 8px 0; align-items: center;`}>
                   <span>Sort by:</span>
                   <SortList
-                    sortList={this.state.sortList}
+                    sortList={this.props.sort.sortList}
                     onClick={this.setSort}
-                    selected={this.state.sortKey.sortBy}
+                    selected={this.props.sort.sortBy}
+                    sortDirection={this.props.sort.sortDirection}
                   />
                 </div>
               </div>
@@ -166,8 +148,8 @@ class Products extends React.Component {
               </div>
 
               <ProductCardsList
-                sortBy={this.state.sortKey.sortBy}
-                sortDirection={this.state.sortKey.sortDirection}
+                sortBy={this.props.sort.sortBy}
+                sortDirection={this.props.sort.sortDirection}
                 filters={this.state.filters}
                 wines={this.props.common.wines}
               />
@@ -191,7 +173,8 @@ function mapStateToProps(state) {
 Products.propTypes = {
   dispatch: PropTypes.func.isRequired,
   common: PropTypes.object,
-  ui: PropTypes.object.isRequired
+  ui: PropTypes.object.isRequired,
+  sort: PropTypes.object.isRequired
 }
 
 // Set default value for prop if not required and not present
