@@ -1,8 +1,9 @@
 const sortActions = {
-  setSort: (sortBy, sortDirection) => ({
+  setSort: (sortBy, sortDirection, sortList) => ({
     type: 'SET_SORT',
     sortBy,
-    sortDirection
+    sortDirection,
+    sortList
   })
 };
 
