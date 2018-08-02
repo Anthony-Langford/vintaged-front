@@ -102,17 +102,15 @@ class Products extends React.Component {
   }
 
   setSort(sortBy, id) {
-    console.log('id', id)
-
     let sortDirection = this.props.sort.sortDirection
+    let sortList = this.props.sort.sortList
 
     if (this.props.sort.sortBy === sortBy) {
       sortDirection = sortDirection === 'ascending' ? 'descending' : 'ascending'
+      sortList[id].sortDirection = sortList[id].sortDirection === 'ascending' ? 'descending' : 'ascending'
     }
 
-    console.log('sortDirection', sortDirection)
-
-    store.dispatch(sortActions.setSort(sortBy, sortDirection))
+    store.dispatch(sortActions.setSort(sortBy, sortDirection, sortList))
   }
 
   render() {
@@ -129,7 +127,7 @@ class Products extends React.Component {
                   <SortList
                     sortList={this.props.sort.sortList}
                     onClick={this.setSort}
-                    selected={this.props.sort.sortBy}
+                    sortBy={this.props.sort.sortBy}
                     sortDirection={this.props.sort.sortDirection}
                   />
                 </div>
