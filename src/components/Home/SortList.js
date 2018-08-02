@@ -13,8 +13,9 @@ const List = styled('ul')`
 
 export default function SortList({
   sortList,
-  selected,
-  onClick
+  sortBy,
+  onClick,
+  sortDirection
 }) {
   return(
     <List>
@@ -25,8 +26,8 @@ export default function SortList({
           onClick={onClick}
           title={sortItem.title}
           value={sortItem.value}
-          selected={selected}
-          sortDirection={sortItem.sortDirection}
+          sortBy={sortBy}
+          sortDirection={sortDirection}
         />
       )}
     </List>
@@ -36,6 +37,7 @@ export default function SortList({
 // Static type checking for props
 SortList.propTypes = {
   sortList: PropTypes.array.isRequired,
-  selected: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  sortBy: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  sortDirection: PropTypes.string.isRequired
 }
