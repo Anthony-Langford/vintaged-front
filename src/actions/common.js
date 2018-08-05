@@ -43,6 +43,15 @@ const commonActions = {
             tasting_note
             price_in_cents
             product_no
+            inventory_history {
+              diff
+              units
+              updatedAt
+            }
+            heat_history {
+              heat
+              updatedAt
+            }
             released_on
             volume_in_milliliters
             origin
