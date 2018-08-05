@@ -57,6 +57,12 @@ export default function ProductCard({ wine }) {
                 <td>Heat</td>
                 <td>{wine.heat}</td>
               </tr>
+              {wine.store_LAPI ? (
+                <tr>
+                  <td>Stock at {wine.store_LAPI[0].store_id}</td>
+                  <td>~{wine.store_LAPI[0].quantity}</td>
+                </tr>
+              ) : null}
             </tbody>
           </table>
         </div>
