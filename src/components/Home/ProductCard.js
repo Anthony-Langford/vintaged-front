@@ -29,34 +29,36 @@ export default function ProductCard({ wine }) {
           <table css={`width: 100%;
               border: 1px solid #ddd;
               padding: 3px;`}>
-            <tr css={`background-color: #f2f2f2;`}>
-              <td>ABV</td>
-              <td>{`${wine.alcohol_content/100}%`}</td>
-            </tr>
-            <tr>
-              <td>Sugar GPL</td>
-              <td>{wine.sugar_in_grams_per_liter}</td>
-            </tr>
-            <tr css={`background-color: #f2f2f2;`}>
-              <td>Release date</td>
-              <td>{wine.released_on}</td>
-            </tr>
-            <tr>
-              <td>Initial inventory</td>
-              <td>~{wine.release_units} bottles</td>
-            </tr>
-            <tr css={`background-color: #f2f2f2;`}>
-              <td>Sold</td>
-              <td>{wine.sold} bottles</td>
-            </tr>
-            <tr>
-              <td>Percent Sold</td>
-              <td>{wine.sold_percent}%</td>
-            </tr>
-            <tr css={`font-weight: bold; margin-top: 45px; background-color: #f2f2f2;`}>
-              <td>Heat</td>
-              <td>{wine.heat}</td>
-            </tr>
+            <tbody>
+              <tr css={`background-color: #f2f2f2;`}>
+                <td>ABV</td>
+                <td>{`${wine.alcohol_content/100}%`}</td>
+              </tr>
+              <tr>
+                <td>Sugar GPL</td>
+                <td>{wine.sugar_in_grams_per_liter}</td>
+              </tr>
+              <tr css={`background-color: #f2f2f2;`}>
+                <td>Release date</td>
+                <td>{wine.released_on}</td>
+              </tr>
+              <tr>
+                <td>Initial inventory</td>
+                <td>~{wine.release_units} bottles</td>
+              </tr>
+              <tr css={`background-color: #f2f2f2;`}>
+                <td>Sold</td>
+                <td>{wine.sold} bottles</td>
+              </tr>
+              <tr>
+                <td>Percent Sold</td>
+                <td>{wine.sold_percent}%</td>
+              </tr>
+              <tr css={`font-weight: bold; margin-top: 45px; background-color: #f2f2f2;`}>
+                <td>Heat</td>
+                <td>{wine.heat}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

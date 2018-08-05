@@ -29,6 +29,7 @@ export default function NavLinks() {
   const links = [
     { name: 'Home', link: "/" },
     { name: 'Products', link: "/products" },
+    { name: 'HeatChart', link: "/heatchart" },
   ]
 
   return links.map(obj => (
@@ -58,6 +59,7 @@ export default function NavLinks() {
             {obj.name}
           </Link>
         )
+        
       )}
     </Match>
   ))
