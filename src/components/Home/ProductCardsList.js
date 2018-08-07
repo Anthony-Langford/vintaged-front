@@ -59,7 +59,7 @@ export default function ProductCardsList({
   const topFiveWines = mapped.map(el => (
     filteredWines[el.index]
   ))
-  
+
   return(
     <div
       label="ProductCardsList"
@@ -68,6 +68,7 @@ export default function ProductCardsList({
         flex-flow: row wrap;
       `}
     >
+      {console.log(topFiveWines)}
       {topFiveWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
     </div>
   )
