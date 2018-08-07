@@ -14,8 +14,7 @@ const List = styled('ul')`
 export default function SortList({
   sortList,
   sortBy,
-  onClick,
-  sortDirection
+  onClick
 }) {
   return(
     <List>
@@ -27,7 +26,7 @@ export default function SortList({
           title={sortItem.title}
           value={sortItem.value}
           sortBy={sortBy}
-          sortDirection={sortDirection}
+          sortDirection={sortItem.sortDirection}
         />
       )}
     </List>
@@ -38,6 +37,5 @@ export default function SortList({
 SortList.propTypes = {
   sortList: PropTypes.array.isRequired,
   sortBy: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  sortDirection: PropTypes.string.isRequired
+  onClick: PropTypes.func.isRequired
 }
