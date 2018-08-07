@@ -27,7 +27,6 @@ const TitleWrapper = styled('button')`
   background-color: White;
   &:hover {
     cursor: pointer;
-    font-weight: bold;
   }
   &:active {
     outline: none;
@@ -87,9 +86,9 @@ class Dropdown extends React.Component {
   }
 
   toggleList() {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen
-    }))
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
   }
 
   render() {
