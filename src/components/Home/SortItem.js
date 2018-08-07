@@ -39,13 +39,14 @@ export default function SortItem({
         href="#"
         aria-controls="content-0"
         onClick={() => onClick(value, id)}
-        value={!value}
-        sortDirection={sortDirection}
+        value={value}
       >
         <span css={'display: flex;'}>
-          {title}{sortBy === value && sortDirection === 'ascending' ?
-            (<Icon icon="arrow-up" height="12px" width="12px" name="arrow-down" margin='auto 6px' />) :
-            <Icon icon="arrow-up" height="12px" width="12px" name="arrow-up" margin='auto 6px' rotate={true} />}
+          {title}
+          {sortDirection === 'ascending' ?
+            <Icon icon="arrow-up" height="12px" width="12px" name="arrow-down" margin='auto 6px' /> :
+            <Icon icon="arrow-up" height="12px" width="12px" name="arrow-up" margin='auto 6px' rotate={true} />
+          }
         </span>
       </Button>
     </ListItem>
