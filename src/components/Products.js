@@ -8,9 +8,9 @@ import Header from './Home/Header'
 import ContentWrapper from './Home/ContentWrapper'
 import NavWrapper from './Home/NavWrapper'
 import LoaderWrapper from './Home/LoaderWrapper'
-import Dropdown from './Home/Dropdown'
+import Sorting from './Home/Sorting'
+import Filtering from './Home/Filtering'
 import ProductCardsList from './Home/ProductCardsList'
-import SortList from './Home/SortList'
 import Footer from './Home/Footer'
 
 // Import actions
@@ -114,6 +114,7 @@ class Products extends React.Component {
   }
 
   render() {
+
     return (
       <React.Fragment>
         <ContentWrapper label="Content">
@@ -121,29 +122,19 @@ class Products extends React.Component {
 
           <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
             <LoaderWrapper loading={this.props.common.isFetching}>
-              <div label="Sorting" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-                <div css={`display: flex; margin: 8px 0; align-items: center;`}>
-                  <span>Sort by:</span>
-                  <SortList
-                    sortList={this.props.sort.sortList}
-                    onClick={this.setSort}
-                    sortBy={this.props.sort.sortBy}
-                    sortDirection={this.props.sort.sortDirection}
-                  />
-                </div>
-              </div>
 
-              <div label="Filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-                <div css={`margin: 8px 0;`}>
-                  <span>Filter by:</span>
-                </div>
+              <Sorting
+                sortList={this.props.sort.sortList}
+                onClick={this.setSort}
+                sortBy={this.props.sort.sortBy}
+                sortDirection={this.props.sort.sortDirection}
+              />
 
-                <Dropdown
-                  title={this.setTitle('secondary_category')}
-                  list={this.state.secondary_category}
-                  toggleItem={this.toggleFilter}
-                />
-              </div>
+              <Filtering
+                title={this.setTitle('secondary_category')}
+                list={this.state.secondary_category}
+                toggleItem={this.toggleFilter}
+              />
 
               <ProductCardsList
                 sortBy={this.props.sort.sortBy}
