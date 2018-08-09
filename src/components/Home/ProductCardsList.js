@@ -68,7 +68,6 @@ export default function ProductCardsList({
         flex-flow: row wrap;
       `}
     >
-      {console.log(topFiveWines)}
       {topFiveWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
     </div>
   )
