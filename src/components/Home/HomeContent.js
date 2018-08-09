@@ -21,8 +21,8 @@ export default function HomeContent({
         Explore Vintaged and Find Your Wine
       </h1>
       {geolocation ?
-        <p css={`text-align: center`}>These are the best wines we found for you from your nearest store</p> :
-        <p css={`text-align: center`}>These are the best wines we found for you from across Ontario</p>
+        <p css={`text-align: center`}>We found the best wines from your nearest store for you</p> :
+        <p css={`text-align: center`}>We found the best wines from across Ontario for you </p>
       }
     </div>
   )
