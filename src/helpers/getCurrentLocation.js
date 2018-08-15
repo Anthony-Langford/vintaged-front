@@ -14,17 +14,17 @@ export default () => {
 
       // Check if user is in Ontario
       if ((52.84 > lat && lat > 42) && (-83.026 > lon > -90)) {
-        console.log(`User is in Ontario lat ${lat}°, lon ${lon}°`)
+        console.log(`You are here in Ontario lat ${lat}°, lon ${lon}°`)
         // Fetch wines from nearest store to user's location
-        store.dispatch(commonActions.fetchWines(lat, lon))
+        store.dispatch(commonActions.fetchWines())
       } else {
-        console.log(`User is not in Ontario lat ${lat}°, lon ${lon}°`)
+        console.log(`You are not in Ontario lat ${lat}°, lon ${lon}°`)
+        store.dispatch(commonActions.fetchWines())
       }
     }
   
     const errorCallback = error => {
       console.log('ERROR(' + error.code + '): ' + error.message);
-      store.dispatch(commonActions.fetchWines())
     }
   
     const options = { timeout: 15000 }
@@ -32,6 +32,6 @@ export default () => {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options)
   } else {
     /* Geolocation is not available */
-    console.log('Geolocation is not available 👎🏽');
+    console.log('I am sorry, we are unable to find your location.');
   }
 }
