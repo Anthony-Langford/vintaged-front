@@ -18,7 +18,7 @@ const commonActions = {
     receivedAt: Date.now(),
   }),
 
-  fetchWines: (lat, lon) => (
+  fetchWines: () => (
     dispatch => {
       dispatch(commonActions.requestWines())
 
@@ -34,10 +34,6 @@ const commonActions = {
             name
             alcohol_content
             heat
-            ${(lat && lon) ? `store_LAPI(lat:${lat} lon:${lon}){
-              store_id
-              quantity
-            }` : ''}
             image_url
             image_thumb_url
             tasting_note
