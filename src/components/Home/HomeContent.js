@@ -1,10 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// add link to wines (with filter option?)
-// add data-driven content
-// add top 5 wines for ontario?
-
 export default function HomeContent({
   geolocation
 }) {
@@ -22,7 +18,7 @@ export default function HomeContent({
       </h1>
       {geolocation ?
         <p css={`text-align: center`}>We found the best wines from your nearest store for you</p> :
-        <p css={`text-align: center`}>We found the best wines from across Ontario for you </p>
+        <p css={`text-align: center`}>We found the best wines in Ontario for you </p>
       }
     </div>
   )
