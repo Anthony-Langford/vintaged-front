@@ -115,7 +115,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const geolocation = this.props.common.lat && this.props.common.lon ? true : false
+    const geolocation = this.props.location.lat && this.props.location.lon ? true : false
 
     return (
       <React.Fragment>
@@ -123,9 +123,10 @@ class Home extends React.Component {
           <Header label="Header" toggleNav={this.toggleNav} />
 
           <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
-            <LoaderWrapper loading={this.props.common.isFetching}>
+            <LoaderWrapper loading={this.props.products.isFetching}>
               <HomeContent
                 geolocation={geolocation}
+                stores={this.props.stores}
               />
 
               <Sorting
@@ -145,7 +146,7 @@ class Home extends React.Component {
                 sortBy={this.props.sort.sortBy}
                 sortDirection={this.props.sort.sortDirection}
                 filters={this.state.filters}
-                wines={this.props.common.wines}
+                wines={this.props.products.wines}
               />
 
             </LoaderWrapper>
@@ -158,23 +159,23 @@ class Home extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    ...state
-  }
-}
+const mapStateToProps = state => ({
+  ...state
+})
 
 // Static type checking for props
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  common: PropTypes.object,
+  products: PropTypes.object,
   ui: PropTypes.object.isRequired,
-  sort: PropTypes.object.isRequired
+  sort: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  stores: PropTypes.object.isRequired,
 }
 
 // Set default value for prop if not required and not present
 Home.defaultProps = {
-  common: {}
+  products: {}
 }
 
 export default connect(mapStateToProps)(Home)
