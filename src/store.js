@@ -4,11 +4,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 // Import the root reducer
-import rootReducer from './reducers/index';
+import rootReducer from './reducers';
 
 // Create an object for the default state
 const initialState = {
-  common: {
+  products: {
     wines: []
   }
 }
