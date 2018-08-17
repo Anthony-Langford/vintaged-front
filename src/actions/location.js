@@ -11,6 +11,6 @@ const locationActions = {
   clearStore: () => ({
     type: 'CLEAR_STORE',
   })
-};
+}
 
 export default locationActions
