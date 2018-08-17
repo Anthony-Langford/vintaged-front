@@ -9,12 +9,12 @@ import Products from './Products'
 // Import helpers
 import store from '../store'
 import '../styles/normalize.css'
-import { commonActions } from '../actions'
+import { productActions } from '../actions'
 import getCurrentLocation from '../helpers/getCurrentLocation'
 
 store.subscribe(() => {})
 
-store.dispatch(commonActions.fetchWines())
+store.dispatch(productActions.fetchWines())
 
 getCurrentLocation()
 
