@@ -1,6 +1,9 @@
-
 import store from '../store'
-import { commonActions } from '../actions'
+import {
+  locationActions,
+  productActions,
+  storeActions
+} from '../actions'
 
 export default () => {
   if ("geolocation" in navigator) {
@@ -10,16 +13,16 @@ export default () => {
       const lon = position.coords.longitude
 
       // Store user's location
-      store.dispatch(commonActions.receiveLocation(lat, lon))
+      store.dispatch(locationActions.receiveLocation(lat, lon))
 
       // Check if user is in Ontario
-      if ((52.84 > lat && lat > 42) && (-83.026 > lon > -90)) {
+      if ((56 > lat && lat > 41) && (-95 < lon && lon < -74)) {
         console.log(`You are here in Ontario lat ${lat}°, lon ${lon}°`)
         // Fetch wines from nearest store to user's location
-        store.dispatch(commonActions.fetchWines())
+        store.dispatch(storeActions.fetchNearestStore(lat, lon))
       } else {
         console.log(`You are not in Ontario lat ${lat}°, lon ${lon}°`)
-        store.dispatch(commonActions.fetchWines())
+        store.dispatch(productActions.fetchWines())
       }
     }
   
