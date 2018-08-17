@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import store from '../store'
 
 // Import components
 import Header from './Home/Header'
@@ -17,7 +16,8 @@ import Footer from './Home/Footer'
 // Import actions
 import {
   uiActions,
-  sortActions
+  sortActions,
+  filterActions
 } from '../actions'
 
 // Import locale
@@ -52,13 +52,13 @@ class Home extends React.Component {
       ]
     }
 
-    this.toggleNav = this.toggleNav.bind(this);
-    this.toggleFilter = this.toggleFilter.bind(this);
-    this.setSort = this.setSort.bind(this);
+    this.toggleNav = this.toggleNav.bind(this)
+    this.toggleFilter = this.toggleFilter.bind(this)
+    this.setSort = this.setSort.bind(this)
   }
 
   toggleNav() {
-    store.dispatch(uiActions.toggleNav(!this.props.ui.navOpen))
+    this.props.dispatch(uiActions.toggleNav(!this.props.ui.navOpen))
   }
 
   // Update the state upon changing selected filters
@@ -81,10 +81,9 @@ class Home extends React.Component {
 
     this.setState({
       [key]: category,
-      filters: {
-        [key]: updatedFilters
-      }
     })
+
+    this.props.dispatch(filterActions.setFilter(key, updatedFilters))
   }
 
   // Sets the dropdown title depending on selected items
@@ -111,7 +110,7 @@ class Home extends React.Component {
       sortList[id].sortDirection = sortList[id].sortDirection === 'ascending' ? 'descending' : 'ascending'
     }
 
-    store.dispatch(sortActions.setSort(sortBy, sortDirection, sortList))
+    this.props.dispatch(sortActions.setSort(sortBy, sortDirection, sortList))
   }
 
   render() {
@@ -145,7 +144,7 @@ class Home extends React.Component {
               <ProductCardsList
                 sortBy={this.props.sort.sortBy}
                 sortDirection={this.props.sort.sortDirection}
-                filters={this.state.filters}
+                filters={this.props.filters}
                 wines={this.props.products.wines}
               />
 
@@ -171,6 +170,7 @@ Home.propTypes = {
   sort: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   stores: PropTypes.object.isRequired,
+  filters: PropTypes.object.isRequired,
 }
 
 // Set default value for prop if not required and not present
