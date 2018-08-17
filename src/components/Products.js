@@ -121,7 +121,7 @@ class Products extends React.Component {
           <Header label="Header" toggleNav={this.toggleNav} />
 
           <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
-            <LoaderWrapper loading={this.props.common.isFetching}>
+            <LoaderWrapper loading={this.props.products.isFetching}>
 
               <Sorting
                 sortList={this.props.sort.sortList}
@@ -140,7 +140,7 @@ class Products extends React.Component {
                 sortBy={this.props.sort.sortBy}
                 sortDirection={this.props.sort.sortDirection}
                 filters={this.state.filters}
-                wines={this.props.common.wines}
+                wines={this.props.products.wines}
               />
             </LoaderWrapper>
           </NavWrapper>
@@ -161,14 +161,14 @@ function mapStateToProps(state) {
 // Static type checking for props
 Products.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  common: PropTypes.object,
+  products: PropTypes.object,
   ui: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired
 }
 
 // Set default value for prop if not required and not present
 Products.defaultProps = {
-  common: {}
+  products: {}
 }
 
 export default connect(mapStateToProps)(Products)
