@@ -2,37 +2,37 @@ export default function products(
   state = {
     isFetching: false,
   },
-  action) {
+  action
+) {
   switch (action.type) {
-  case 'REQUEST_WINES' : {
+  case 'REQUEST_WINES':
     return {
       ...state,
       isFetching: true,
-    };
-  }
-  case 'RECEIVE_WINES' : {
+    }
+    
+  case 'RECEIVE_WINES':
     return {
       ...state,
       isFetching: false,
       wines: action.wines,
       lastUpdated: action.receivedAt,
-    };
-  }
-  case 'RECEIVE_WINE' : {    
+    }
+    
+  case 'RECEIVE_WINE':
     return {
       ...state,
       isFetching: false,
       [action.wine.id]: action.wine,
       lastUpdated: action.receivedAt,
-    };
-  }
-  case 'CLEAR_STORE' : {
+    }
+
+  case 'CLEAR_STORE':
     return {
       isFetching: false,
-    };
-  }
-  default : {
-    return state;
-  }
+    }
+
+  default:
+    return state
   }
 }
