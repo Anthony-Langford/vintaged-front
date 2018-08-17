@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import onClickOutside from 'react-onclickoutside'
 
+// TODO: bug when scrolled to bottom and selecting/unselecting going from 2 wines to 1 or 1 to 2
+// remembering scroll position?
+
 // Import components
 import Icon from './Icon'
 
