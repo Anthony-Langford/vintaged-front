@@ -27,7 +27,7 @@ export default () => {
     }
   
     const errorCallback = error => {
-      console.log('ERROR(' + error.code + '): ' + error.message);
+      console.log('ERROR(' + error.code + '): ' + error.message)
     }
   
     const options = { timeout: 15000 }
@@ -35,6 +35,6 @@ export default () => {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options)
   } else {
     /* Geolocation is not available */
-    console.log('I am sorry, we are unable to find your location.');
+    console.log('I am sorry, we are unable to find your location.')
   }
 }
