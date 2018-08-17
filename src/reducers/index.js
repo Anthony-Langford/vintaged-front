@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux'
-import common from './common'
+import products from './products'
 import ui from './ui'
 import sort from './sort'
-
-// move lat lon to geolocation
+import location from './location'
+import stores from './stores'
 
 const rootReducer = combineReducers({
-  common,
+  products,
   ui,
-  sort
+  sort,
+  location,
+  stores
 })
 
 export default rootReducer
