@@ -2,9 +2,10 @@ export default function stores(
   state = {
     isFetching: false,
   },
-  action) {
+  action
+) {
   switch (action.type) {
-  case 'RECEIVE_STORE': {
+  case 'RECEIVE_STORE':
     return {
       ...state,
       nearest: {
@@ -13,14 +14,13 @@ export default function stores(
         lastUpdated: action.receivedAt,
       },
     }
-  }
-  case 'CLEAR_STORE': {
+
+  case 'CLEAR_STORE':
     return {
       isFetching: false,
-    };
-  }
-  default : {
-    return state;
-  }
+    }
+
+  default:
+    return state
   }
 }
