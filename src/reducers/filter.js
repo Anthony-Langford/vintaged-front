@@ -2,18 +2,18 @@ export default function filter(
   state = {
     filters: {}
   },
-  action) {
+  action
+) {
   switch (action.type) {
-  case 'SET_FILTER' : {
+  case 'SET_FILTER':
     return {
       ...state,
       filters: {
         [action.key]: action.filter
       },
-    };
-  }
-  default : {
+    }
+
+  default:
     return state;
-  }
   }
 }
