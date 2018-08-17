@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import store from '../store'
 
 // Import components
 import Header from './Home/Header'
@@ -57,7 +56,7 @@ class Products extends React.Component {
   }
 
   toggleNav() {
-    store.dispatch(uiActions.toggleNav(!this.props.ui.navOpen))
+    this.props.dispatch(uiActions.toggleNav(!this.props.ui.navOpen))
   }
 
   // Update the state upon changing selected filters
@@ -110,7 +109,7 @@ class Products extends React.Component {
       sortList[id].sortDirection = sortList[id].sortDirection === 'ascending' ? 'descending' : 'ascending'
     }
 
-    store.dispatch(sortActions.setSort(sortBy, sortDirection, sortList))
+    this.props.dispatch(sortActions.setSort(sortBy, sortDirection, sortList))
   }
 
   render() {
