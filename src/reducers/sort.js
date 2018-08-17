@@ -20,22 +20,21 @@ export default function sort(
   action
 ) {
   switch (action.type) {
-  case 'SET_SORT' : {
+  case 'SET_SORT':
     return {
       ...state,
       sortBy: action.sortBy,
       sortDirection: action.sortDirection,
       sortList: action.sortList
-    };
-  }
-  case 'SET_SORT_LIST' : {
+    }
+
+  case 'SET_SORT_LIST':
     return {
       ...state,
       sortList: action.sortList
-    };
-  }
-  default : {
+    }
+    
+  default:
     return state;
-  }
   }
 }
