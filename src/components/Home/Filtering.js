@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 // Import components
 import Dropdown from './Dropdown'
 
-export default function Sorting({
+export default function Filtering({
   title,
   list,
   toggleItem
@@ -26,7 +26,7 @@ export default function Sorting({
 }
 
 // Static type checking for props
-Sorting.propTypes = {
+Filtering.propTypes = {
   title: PropTypes.string.isRequired,
   list: PropTypes.array.isRequired,
   toggleItem: PropTypes.func.isRequired
