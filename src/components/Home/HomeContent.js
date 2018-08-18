@@ -19,7 +19,7 @@ export default function HomeContent({
       </h1>
       {geolocation && stores.nearest ?
         <React.Fragment>
-          <p css={`text-align: center`}>We found a store near you at {stores.nearest.name}</p>
+          <p css={`text-align: center`}>We found a vintage section near you at {stores.nearest.name}</p>
           <p css={`text-align: center; margin-top: 0;`}>Showing you the best wines available here</p>
         </React.Fragment> :
         <p css={`text-align: center`}>Showing you the best wines in Ontario</p>
