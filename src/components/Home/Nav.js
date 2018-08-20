@@ -8,6 +8,11 @@ export default function Nav({
   toggleNav,
   navOpen
 }) {
+  const links = [
+    { name: 'Home', link: "/" },
+    { name: 'Products', link: "/products" },
+  ]
+
   return(
     <div
       label="NavBar"
@@ -32,7 +37,7 @@ export default function Nav({
       <div css={`max-width: 350px;`}>
         <h3>Navigation</h3>
         <nav>
-          <NavLinks navOpen={navOpen} />
+          <NavLinks links={links} navOpen={navOpen} />
         </nav>
       </div>
       <div
