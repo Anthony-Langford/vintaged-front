@@ -26,13 +26,9 @@ const active = css`
 `
 
 export default function NavLinks({
+  links,
   navOpen
 }) {
-  const links = [
-    { name: 'Home', link: "/" },
-    { name: 'Products', link: "/products" },
-  ]
-
   return links.map(obj => (
     <Match path={obj.link} key={obj.name}>
       {props => (
@@ -67,6 +63,7 @@ export default function NavLinks({
 
 // Static type checking for props
 NavLinks.propTypes = {
+  links: PropTypes.array,
   navOpen: PropTypes.bool,
   match: PropTypes.object
 }
