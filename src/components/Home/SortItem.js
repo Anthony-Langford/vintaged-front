@@ -45,7 +45,7 @@ export default function SortItem({
           {title}
           {sortDirection === 'ascending' ?
             <Icon icon="arrow" height="12px" width="12px" name="arrow-down" margin='auto 6px' /> :
-            <Icon icon="arrow" height="12px" width="12px" name="arrow-up" margin='auto 6px' rotate={true} />
+            <Icon icon="arrow" height="12px" width="12px" name="arrow-up" margin='auto 6px' rotate={180} />
           }
         </span>
       </Button>
