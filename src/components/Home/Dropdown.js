@@ -5,6 +5,8 @@ import onClickOutside from 'react-onclickoutside'
 
 // TODO: bug when scrolled to bottom and selecting/unselecting going from 2 wines to 1 or 1 to 2
 // remembering scroll position?
+// TODO: change to not depend on react-onclickoutside library
+// look into refs?
 
 // Import components
 import Icon from './Icon'
@@ -111,12 +113,28 @@ class Dropdown extends React.Component {
             label="dropdown"
             onClick={this.toggleList}
           >
-            <Title label="dropdown-title" isOpen={isOpen}>
+            <Title
+              label="dropdown-title"
+              isOpen={isOpen}
+            >
               {title}
             </Title>
-            {isOpen
-              ? <Icon icon="arrow_up" height="24px" width="24px" name="arrow-down" margin='auto 6px' rotate={true} />
-              : <Icon icon="arrow_up" height="24px" width="24px" name="arrow-up" margin='auto 6px' />
+            {isOpen ?
+              <Icon
+                icon="arrow_head"
+                height="24px"
+                width="24px"
+                name="arrow-down"
+                margin='auto 6px'
+                rotate={180}
+              /> :
+              <Icon
+                icon="arrow_head"
+                height="24px"
+                width="24px"
+                name="arrow-up"
+                margin='auto 6px'
+              />
             }
           </TitleWrapper>
           {isOpen && (
