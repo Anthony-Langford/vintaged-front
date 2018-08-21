@@ -33,7 +33,7 @@ export default function Icon ({
           object-fit: cover;
           object-position: 50% 50%;
           opacity: 1;
-          transform: ${rotate ? 'rotate(180deg)' : 'none'};
+          transform: ${rotate ? `rotate(${rotate}deg)` : 'none'};
         `}
       />
     </div>
@@ -46,7 +46,7 @@ Icon.propTypes = {
   height: PropTypes.string,
   width: PropTypes.string,
   margin: PropTypes.string,
-  rotate: PropTypes.bool,
+  rotate: PropTypes.number,
 }
 
 // Set default value for prop if not required and not present
