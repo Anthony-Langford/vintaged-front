@@ -6,12 +6,27 @@ import ProductCard from './ProductCard'
 
 export default function ProductCardsList({
   wines,
+  location,
   sortBy,
   sortDirection,
   filters
 }) {
+
+  let productList = []
+
+  if (location.nearestStore) {
+    productList = location.nearestStore.vintages.map(product => ({
+      ...product.vintage,
+      quantity: product.quantity
+    }))
+  } else {
+    productList = wines
+  }
+
   // Filter by store-specific inventory data if possible
-  let filteredWines = wines.slice(0, 20);
+  let filteredWines = productList[0].quantity ?
+    productList.filter(wine => wine.quantity > 0).slice(0, 20) :
+    productList.slice(0, 20)
 
   // Iterate through filters and filter if any are selected
   for (const key in filters) {
@@ -37,7 +52,7 @@ export default function ProductCardsList({
         flex-flow: row wrap;
       `}
     >
-      { filteredWines.map(wine => <ProductCard wine={wine} key={wine.id}/>)}
+      {filteredWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
     </div>
   )
 }
@@ -45,6 +60,7 @@ export default function ProductCardsList({
 // Static type checking for props
 ProductCardsList.propTypes = {
   wines: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
   sortBy: PropTypes.string.isRequired,
   sortDirection: PropTypes.string.isRequired,
   filters: PropTypes.object
