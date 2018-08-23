@@ -102,7 +102,7 @@ class Home extends React.Component {
   }
 
   setSort(sortBy, id) {
-    let sortDirection = this.props.sort.sortDirection
+    let sortDirection = this.props.sort.sortList.find(el => el.id === id).sortDirection
     let sortList = this.props.sort.sortList
 
     if (this.props.sort.sortBy === sortBy) {
@@ -125,7 +125,7 @@ class Home extends React.Component {
             <LoaderWrapper loading={this.props.products.isFetching}>
               <HomeContent
                 geolocation={geolocation}
-                stores={this.props.stores}
+                location={this.props.location}
               />
 
               <Sorting
@@ -146,6 +146,7 @@ class Home extends React.Component {
                 sortDirection={this.props.sort.sortDirection}
                 filters={this.props.filters}
                 wines={this.props.products.wines}
+                location={this.props.location}
               />
 
             </LoaderWrapper>
@@ -169,7 +170,6 @@ Home.propTypes = {
   ui: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  stores: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
 }
 
