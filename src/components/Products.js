@@ -140,6 +140,7 @@ class Products extends React.Component {
                 sortDirection={this.props.sort.sortDirection}
                 filters={this.state.filters}
                 wines={this.props.products.wines}
+                location={this.props.location}
               />
             </LoaderWrapper>
           </NavWrapper>
@@ -162,7 +163,8 @@ Products.propTypes = {
   dispatch: PropTypes.func.isRequired,
   products: PropTypes.object,
   ui: PropTypes.object.isRequired,
-  sort: PropTypes.object.isRequired
+  sort: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 }
 
 // Set default value for prop if not required and not present
