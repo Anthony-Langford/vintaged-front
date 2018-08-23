@@ -3,7 +3,6 @@ import products from './products'
 import ui from './ui'
 import sort from './sort'
 import location from './location'
-import stores from './stores'
 import filters from './filters'
 
 const rootReducer = combineReducers({
@@ -11,7 +10,6 @@ const rootReducer = combineReducers({
   ui,
   sort,
   location,
-  stores,
   filters
 })
 
