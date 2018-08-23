@@ -1,8 +1,7 @@
 import store from '../store'
 import {
   locationActions,
-  productActions,
-  storeActions
+  productActions
 } from '../actions'
 
 export default () => {
@@ -19,7 +18,7 @@ export default () => {
       if ((56 > lat && lat > 41) && (-95 < lon && lon < -74)) {
         console.log(`You are here in Ontario lat ${lat}°, lon ${lon}°`)
         // Fetch wines from nearest store to user's location
-        store.dispatch(storeActions.fetchNearestStore(lat, lon))
+        store.dispatch(locationActions.fetchNearestStore(lat, lon))
       } else {
         console.log(`You are not in Ontario lat ${lat}°, lon ${lon}°`)
         store.dispatch(productActions.fetchWines())
