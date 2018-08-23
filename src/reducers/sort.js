@@ -13,7 +13,7 @@ export default function sort(
         id: 1,
         title: 'Price',
         value: 'price_in_cents',
-        sortDirection: 'descending'
+        sortDirection: 'ascending'
       }
     ],
   },
