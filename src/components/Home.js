@@ -106,7 +106,7 @@ class Home extends React.Component {
     let sortList = this.props.sort.sortList
 
     if (this.props.sort.sortBy === sortBy) {
-      sortDirection = sortDirection === 'ascending' ? 'descending' : 'ascending'
+      sortDirection = (sortDirection === 'ascending') ? 'descending' : 'ascending'
       sortList[id].sortDirection = sortList[id].sortDirection === 'ascending' ? 'descending' : 'ascending'
     }
 

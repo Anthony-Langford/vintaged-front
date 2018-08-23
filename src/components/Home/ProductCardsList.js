@@ -11,12 +11,10 @@ export default function ProductCardsList({
   filters
 }) {
   // Filter by store-specific inventory data if possible
-  let filteredWines = wines[0].store_LAPI ?
-    wines.filter(wine => wine.store_LAPI[0].quantity > 0).slice(0, 5) :
-    wines.slice(0, 5)
+  let filteredWines = wines.slice(0, 20);
 
   // Iterate through filters and filter if any are selected
-  for(const key in filters) {
+  for (const key in filters) {
     if (filters[key].length > 0) {
       filteredWines = filteredWines.filter(wine => {
         return filters[key].indexOf(wine[key]) > -1
@@ -24,43 +22,14 @@ export default function ProductCardsList({
     }
   }
 
-  filteredWines = filteredWines.slice(0, 5)
-
   // Sort wines by selected sorting method
-  let mapped = filteredWines.map((wine, i) => {
-    return {
-      index: i,
-      value: wine[sortBy]
-    }
-  })
-
   if (sortDirection === 'ascending') {
-    mapped.sort((a, b) => {
-      if (a.value > b.value) {
-        return 1
-      }
-      if (b.value > a.value) {
-        return -1
-      }
-      return 0
-    })
+    filteredWines.sort((a, b) => (a[sortBy] >= b[sortBy]) ? 1 : -1);
   } else {
-    mapped.sort((a, b) => {
-      if (a.value > b.value) {
-        return -1
-      }
-      if (b.value > a.value) {
-        return 1
-      }
-      return 0
-    })
+    filteredWines.sort((a, b) => (a[sortBy] < b[sortBy]) ? 1 : -1);
   }
 
-  const topFiveWines = mapped.map(el => (
-    filteredWines[el.index]
-  ))
-
-  return(
+  return (
     <div
       label="ProductCardsList"
       css={`
@@ -68,7 +37,7 @@ export default function ProductCardsList({
         flex-flow: row wrap;
       `}
     >
-      {topFiveWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
+      { filteredWines.map(wine => <ProductCard wine={wine} key={wine.id}/>)}
     </div>
   )
 }
