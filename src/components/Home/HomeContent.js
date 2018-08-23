@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default function HomeContent({
   geolocation,
-  stores
+  location
 }) {
   return(
     <div
@@ -17,9 +17,9 @@ export default function HomeContent({
       <h1 css={`font-weight: 300; text-align: center;`}>
         Explore Vintaged and Find Good Wine
       </h1>
-      {geolocation && stores.nearest ?
+      {geolocation && location.nearestStore ?
         <React.Fragment>
-          <p css={`text-align: center`}>{`There's a vintage section near you at ${stores.nearest.name}`}</p>
+          <p css={`text-align: center`}>{`There's a vintage section near you at ${location.nearestStore.name}`}</p>
           <p css={`text-align: center; margin-top: 0;`}>Showing you the best wines available here</p>
         </React.Fragment> :
         <p css={`text-align: center`}>Showing you the best wines in Ontario</p>
@@ -31,5 +31,5 @@ export default function HomeContent({
 // Static type checking for props
 HomeContent.propTypes = {
   geolocation: PropTypes.bool.isRequired,
-  stores: PropTypes.object
+  location: PropTypes.object
 }
