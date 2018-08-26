@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 // Import components
 import Header from './Home/Header'
@@ -8,9 +8,10 @@ import ContentWrapper from './Home/ContentWrapper'
 import NavWrapper from './Home/NavWrapper'
 import LoaderWrapper from './Home/LoaderWrapper'
 import Sorting from './Home/Sorting'
-import Filtering from './Home/Filtering'
+import {filterMap} from './Home/Filtering'
 import ProductCardsList from './Home/ProductCardsList'
 import Footer from './Home/Footer'
+import MultiSelect from './Home/MultiSelect'
 
 // Import actions
 import {
@@ -18,86 +19,24 @@ import {
   sortActions
 } from '../actions'
 
-// Import locale
-import locale from '../locale/Home'
-
 class Products extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      filters: {
-        secondary_category: []
-      },
-      secondary_category: [
-        {
-          id: 0,
-          title: 'Red Wine',
-          selected: false,
-          key: 'secondary_category'
-        },
-        {
-          id: 1,
-          title: 'White Wine',
-          selected: false,
-          key: 'secondary_category'
-        },
-        {
-          id: 2,
-          title: 'Rosé Wine',
-          selected: false,
-          key: 'secondary_category'
-        }
-      ]
-    }
+    super(props);
+    this.state = filterMap;
 
     this.toggleNav = this.toggleNav.bind(this);
-    this.toggleFilter = this.toggleFilter.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
     this.setSort = this.setSort.bind(this);
+  }
+
+  handleFilter(value, type) {
+    this.setState({filters: {
+      [type]: value
+    }});
   }
 
   toggleNav() {
     this.props.dispatch(uiActions.toggleNav(!this.props.ui.navOpen))
-  }
-
-  // Update the state upon changing selected filters
-  toggleFilter(id, key) {
-    // Find the category
-    let category = this.state[key]
-
-    // Toggle the selected boolean
-    category[id].selected = !category[id].selected
-
-    // Find the corresponding filter array
-    let updatedFilters = this.state.filters[key]
-
-    // Update the filter array
-    if (updatedFilters.indexOf(category[id].title) === -1) {
-      updatedFilters.push(category[id].title)
-    } else {
-      updatedFilters.splice(updatedFilters.indexOf(category[id].title), 1)
-    }
-
-    this.setState({
-      [key]: category,
-      filters: {
-        [key]: updatedFilters
-      }
-    })
-  }
-  
-  // Sets the dropdown title depending on selected items
-  setTitle(category) {
-    const itemsSelected = this.state[category].filter(item => (item.selected === true)).length
-
-    if (itemsSelected === 0) {
-      return locale.category[0]
-    }
-    else if (itemsSelected === 1) {
-      return `${itemsSelected} ${locale.category[1]}`
-    }
-    else if (itemsSelected > 1) {
-      return `${itemsSelected} ${locale.category[2]}`
-    }
   }
 
   setSort(sortBy, id) {
@@ -117,7 +56,7 @@ class Products extends React.Component {
     return (
       <React.Fragment>
         <ContentWrapper label="Content">
-          <Header label="Header" toggleNav={this.toggleNav} />
+          <Header label="Header" toggleNav={this.toggleNav}/>
 
           <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
             <LoaderWrapper loading={this.props.products.isFetching}>
@@ -129,10 +68,10 @@ class Products extends React.Component {
                 sortDirection={this.props.sort.sortDirection}
               />
 
-              <Filtering
-                title={this.setTitle('secondary_category')}
-                list={this.state.secondary_category}
-                toggleItem={this.toggleFilter}
+              <MultiSelect
+                options={this.state.secondary_category}
+                type={'secondary_category'}
+                handleChange={this.handleFilter}
               />
 
               <ProductCardsList
@@ -145,7 +84,7 @@ class Products extends React.Component {
             </LoaderWrapper>
           </NavWrapper>
 
-          <Footer />
+          <Footer/>
         </ContentWrapper>
       </React.Fragment>
     )

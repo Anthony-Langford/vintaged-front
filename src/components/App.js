@@ -11,6 +11,7 @@ import store from '../store'
 import '../styles/normalize.css'
 import { productActions } from '../actions'
 import getCurrentLocation from '../helpers/getCurrentLocation'
+import 'antd/dist/antd.css'
 
 store.subscribe(() => {})
 
