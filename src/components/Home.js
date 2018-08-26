@@ -84,7 +84,7 @@ class Home extends React.Component {
               <ProductCardsList
                 sortBy={this.props.sort.sortBy}
                 sortDirection={this.props.sort.sortDirection}
-                filters={this.props.filters}
+                filters={this.state.filters}
                 wines={this.props.products.wines}
                 location={this.props.location}
               />
