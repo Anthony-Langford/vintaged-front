@@ -21,15 +21,29 @@ export default function SortItem({
 }) {
 
   const Button = styled('button')`
-    padding: 0.25rem;
+    background-color: #f2f2f2;
+    border: 1px solid #bfbfbf;
+    box-shadow: inset 0 1px 0 white, inset 0 -1px 0 #d9d9d9, inset 0 0 0 1px #f2f2f2, 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #1D2029;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
     font-weight: ${sortBy === value ? 'bold' : 'normal'};
-    border: none;
-    background-color: White;  
-    border-radius: 5px;
-    &:focus,
-    &:hover {
-      font-weight: bold;
-      cursor: pointer;
+    line-height: 20px;
+    padding: 6px 10px;
+    transition: all 20ms ease-out;
+    outline: none;
+    &:hover,
+    &:focus {
+      background: #f2f2f2;
+      border-color: #8c8c8c;
+      box-shadow: inset 0 1px 0 white, inset 0 -1px 0 #d9d9d9, inset 0 0 0 1px #f2f2f2;
+    }
+    &:active {
+      background: inset 0 2px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
     }
   `
 
@@ -37,7 +51,8 @@ export default function SortItem({
     <ListItem>
       <Button
         href="#"
-        aria-controls="content-0"
+        role={'button'}
+        tabindex={0}
         onClick={() => onClick(value, id)}
         value={value}
       >
