@@ -5,7 +5,7 @@ import onClickOutside from 'react-onclickoutside'
 
 // TODO: bug when scrolled to bottom and selecting/unselecting going from 2 wines to 1 or 1 to 2
 // remembering scroll position?
-// TODO: change to not depend on react-onclickoutside library
+// TODO: create own react-onclickoutside library
 // look into refs?
 
 // Import components
@@ -15,8 +15,8 @@ const DropdownWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 0 0 6px;
   position: absolute;
+  margin: 0 0 0 14px;
   width: 180px;
   z-index: 3;
 `
@@ -106,7 +106,7 @@ class Dropdown extends React.Component {
     const { isOpen } = this.state
 
     return(
-      <div>
+      <div css={`display: flex; width: 210px;`}>
         <DropdownWrapper label="dropdown-wrapper">
           <TitleWrapper
             role="button"

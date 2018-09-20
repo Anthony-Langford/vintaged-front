@@ -26,6 +26,7 @@ import locale from '../locale/Home'
 class Home extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
       filters: {
         secondary_category: []
@@ -128,18 +129,20 @@ class Home extends React.Component {
                 location={this.props.location}
               />
 
-              <Sorting
-                sortList={this.props.sort.sortList}
-                onClick={this.setSort}
-                sortBy={this.props.sort.sortBy}
-                sortDirection={this.props.sort.sortDirection}
-              />
+              <div css={`display: flex; flex-flow: row wrap; justify-content: center;`}>
+                <Sorting
+                  sortList={this.props.sort.sortList}
+                  onClick={this.setSort}
+                  sortBy={this.props.sort.sortBy}
+                  sortDirection={this.props.sort.sortDirection}
+                />
 
-              <Filtering
-                title={this.setTitle('secondary_category')}
-                list={this.state.secondary_category}
-                toggleItem={this.toggleFilter}
-              />
+                <Filtering
+                  title={this.setTitle('secondary_category')}
+                  list={this.state.secondary_category}
+                  toggleItem={this.toggleFilter}
+                />
+              </div>
 
               <ProductCardsList
                 sortBy={this.props.sort.sortBy}

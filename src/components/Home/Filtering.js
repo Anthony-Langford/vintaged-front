@@ -11,8 +11,8 @@ export default function Filtering({
 }) {
 
   return(
-    <div label="Filtering" css={`display: flex; justify-content: start; margin: 0.25rem 0.5rem;`}>
-      <div css={`margin: 8px 0;`}>
+    <div label="Filtering" css={`display: flex; align-self: center; margin: 0.25rem 0.5rem;`}>
+      <div css={`margin: 8px 0; align-self: center;`}>
         <span>Filter by:</span>
       </div>
 
