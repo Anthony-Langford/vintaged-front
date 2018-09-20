@@ -50,6 +50,7 @@ export default function ProductCardsList({
       css={`
         display: flex;
         flex-flow: row wrap;
+        justify-content: center;
       `}
     >
       {filteredWines.map(wine => <ProductCard wine={wine} key={wine.id} />)}
