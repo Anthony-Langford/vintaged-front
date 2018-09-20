@@ -5,6 +5,7 @@ import { Router } from "@reach/router"
 // Import containers
 import Home from './Home'
 import Products from './Products'
+import Test from './Test'
 
 // Import helpers
 import store from '../store'
@@ -23,6 +24,7 @@ const App = () =>
     <Router id="router">
       <Home path="/" />
       <Products path="/products" />
+      <Test path="/test" />
     </Router>
   </Provider>
 
