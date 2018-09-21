@@ -11,32 +11,25 @@ import LoaderWrapper from './Home/LoaderWrapper'
 import Footer from './Home/Footer'
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
-const data = [
-  {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-  {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-  {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-  {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-  {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-  {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-  {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
-];
-
-
-
 // Import actions
 import { uiActions } from '../actions'
 
 class HeatChart extends React.Component {
   constructor(props) {
     super(props)
-    // console.log(props.common.wines);
-    // props.common.wines.map((item) => {
-    //   console.log(item.name);
-    // });
-    // console.log(this.props.common.wines[0].inventory_history.slice((this.props.common.wines[0].inventory_history.length - this.props.common.wines[0].days_since_release)))
+    props.common.wines.map((wine) => {
+      return wine.heat_history.slice(
+        (wine.heat_history.length - wine.days_since_release),
+        (wine.heat_history.length - 1)
+      )});
     this.state = {
+      data: props.common.wines.map( wine => {
+        return wine.heat_history.slice(
+          (wine.heat_history.length - wine.days_since_release),
+          (wine.heat_history.length - 1)
+        )})
     }
-
+    console.log(this.state.data)
     this.toggleNav = this.toggleNav.bind(this);
   }
 
@@ -63,17 +56,19 @@ class HeatChart extends React.Component {
                   width={600}
                   height={300}
                   data={this.props.common.wines[3].inventory_history.slice(
-                    (this.props.common.wines[3].inventory_history.length - (this.props.common.wines[3].days_since_release - 1)),
+                    (this.props.common.wines[3].inventory_history.length - (this.props.common.wines[3].days_since_release -5)),
                     (this.props.common.wines[3].inventory_history.length - 1)
                   )}
                   margin={{top: 5, right: 30, left: 20, bottom: 5}}
                 >
-                  <XAxis dataKey="date" />
-                  <YAxis />
+                  <XAxis dataKey="updatedAt" />
+                  <YAxis yAxisId="left" />
+                  <YAxis yAxisId="right" orientation="right" />
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip />
                   <Legend />
-                  <Line type="monotone" dataKey="diff" stroke="#82ca9d" activeDot={{r: 8}} />
+                  <Line yAxisId="left" type="monotone" dataKey="diff" stroke="#82ca9d" activeDot={{r: 8}} />
+                  <Line yAxisId="right" type="monotone" dataKey="units" stroke="#8884d8" activeDot={{r: 8}} />
                 </LineChart>
 
                 <LineChart
@@ -85,7 +80,7 @@ class HeatChart extends React.Component {
                   )}
                   margin={{top: 5, right: 30, left: 20, bottom: 5}}
                 >
-                  <XAxis dataKey="date" />
+                  <XAxis dataKey="updatedAt" />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip />
@@ -112,7 +107,7 @@ function mapStateToProps(state) {
 // Static type checking for props
 HeatChart.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  common: PropTypes.object,
+  common: PropTypes.object.isRequired,
   ui: PropTypes.object.isRequired
 }
 

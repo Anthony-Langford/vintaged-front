@@ -1,8 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import 'antd-mobile/dist/antd-mobile.css';
 
-import Card from './Card'
+
+import { Card, WhiteSpace, Flex } from 'antd-mobile';
+
+
+
+
 
 export default function ProductCard({ wine }) {
   return(
@@ -61,9 +68,25 @@ export default function ProductCard({ wine }) {
             </tbody>
           </table>
         </div>
+        <LineChart
+          width={600}
+          height={300}
+          data={wine.inventory_history.slice(
+            (wine.inventory_history.length - (wine.days_since_release - 5)),
+            (wine.inventory_history.length - 1)
+          )}
+          margin={{top: 5, right: 30, left: 20, bottom: 5}}
+        >
+          <XAxis dataKey="date" />
+          <YAxis yAxisId="left" />
+          <YAxis yAxisId="right" orientation="right" />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Tooltip />
+          <Legend />
+          <Line yAxisId="left" type="monotone" dataKey="diff" stroke="#82ca9d" activeDot={{r: 8}} />
+          <Line yAxisId="right" type="monotone" dataKey="units" stroke="#8884d8" activeDot={{r: 8}} />
+        </LineChart>
       </div>
-
-
     </Card>
   )
 }

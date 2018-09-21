@@ -13,12 +13,13 @@ import Footer from './Home/Footer'
 // Import actions
 import { uiActions } from '../actions'
 
+
+
 class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
     }
-
     this.toggleNav = this.toggleNav.bind(this);
   }
 
