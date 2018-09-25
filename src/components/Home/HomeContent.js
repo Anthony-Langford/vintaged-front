@@ -14,8 +14,8 @@ export default function HomeContent({
         justify-content: center;
       `}
     >
-      <h1 css={`font-weight: 300; text-align: center;`}>
-        Explore Vintaged and Find Good Wine
+      <h1 css={`font-weight: 600; text-align: center;`}>
+        Explore Vintaged and Discover Fine Wine
       </h1>
       {geolocation && location.nearestStore ?
         <React.Fragment>
