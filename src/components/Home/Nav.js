@@ -40,33 +40,6 @@ export default function Nav({
           <NavLinks links={links} navOpen={navOpen} />
         </nav>
       </div>
-      <div
-        css={`
-          position: relative;
-          overflow: hidden;
-          display: inline-block;
-          padding: 0;
-          width: 100%;
-          height: auto;
-        `}
-      >
-        <img
-          alt="vintaged"
-          src="/thyrsus.jpg"
-          css={`
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            transition: opacity 0.5s;
-            width: 120%;
-            margin-left: -18px;
-            object-fit: cover;
-            object-position: 50% 50%;
-            opacity: 1;
-            mix-blend-mode: multiply;
-          `}
-        />
-      </div>
     </div>
   )
 }
