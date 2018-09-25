@@ -57,7 +57,7 @@ export default function Header ({
         >
           Vintaged
         </h1>
-        <Logo />
+        {/* <Logo /> */}
       </div>
     </div>
   )
