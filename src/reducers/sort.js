@@ -5,7 +5,7 @@ export default function sort(
     sortList: [
       {
         id: 0,
-        title: 'Heat',
+        title: 'Rating',
         value: 'heat',
         sortDirection: 'descending'
       },
