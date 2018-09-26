@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 // Import components
 import Header from './Home/Header'
+import Content from './Products/Content'
 import ContentWrapper from './Home/ContentWrapper'
 import NavWrapper from './Home/NavWrapper'
 import LoaderWrapper from './Home/LoaderWrapper'
@@ -113,6 +114,11 @@ class Products extends React.Component {
   }
 
   render() {
+    const geolocation = this.props.location.lat && this.props.location.lon ? true : false
+    const coords = {
+      lat: this.props.location.lat,
+      lon: this.props.location.lon
+    }
 
     return (
       <React.Fragment>
@@ -121,19 +127,26 @@ class Products extends React.Component {
 
           <NavWrapper toggleNav={this.toggleNav} navOpen={this.props.ui.navOpen}>
             <LoaderWrapper loading={this.props.products.isFetching}>
-
-              <Sorting
-                sortList={this.props.sort.sortList}
-                onClick={this.setSort}
-                sortBy={this.props.sort.sortBy}
-                sortDirection={this.props.sort.sortDirection}
+              <Content
+                coords={coords}
+                geolocation={geolocation}
+                location={this.props.location}
               />
 
-              <Filtering
-                title={this.setTitle('secondary_category')}
-                list={this.state.secondary_category}
-                toggleItem={this.toggleFilter}
-              />
+              <div css={`display: flex; flex-flow: row wrap; justify-content: center;`}>
+                <Sorting
+                  sortList={this.props.sort.sortList}
+                  onClick={this.setSort}
+                  sortBy={this.props.sort.sortBy}
+                  sortDirection={this.props.sort.sortDirection}
+                />
+
+                <Filtering
+                  title={this.setTitle('secondary_category')}
+                  list={this.state.secondary_category}
+                  toggleItem={this.toggleFilter}
+                />
+              </div>
 
               <ProductCardsList
                 sortBy={this.props.sort.sortBy}
