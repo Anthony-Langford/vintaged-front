@@ -1,2 +1,2 @@
 # Vintaged-front
-React front end for Vintaged
+React front-end for Vintaged
