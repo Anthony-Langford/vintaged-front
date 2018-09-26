@@ -173,7 +173,7 @@ Home.propTypes = {
   ui: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  filters: PropTypes.object.isRequired,
+  filters: PropTypes.object.isRequired
 }
 
 // Set default value for prop if not required and not present
